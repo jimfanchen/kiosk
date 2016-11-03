@@ -23,7 +23,7 @@ public class presetOrder {
     public static double orderCostTotal = 11.99;
     public String orderNumber = "";
     public static int totalNumberOfOrders =0;
- 
+    public String name = "combo 1";
     public static entreeOne theBurger = new entreeOne();
     public static drinkItemOne theDrink = new drinkItemOne();
     public static sideItemOne theFries = new sideItemOne();

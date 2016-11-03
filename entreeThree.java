@@ -11,7 +11,7 @@ package kiosk;
  */
 public class entreeThree {
         public static double cost = 8.00;
-    public static int numberOfEntreeTwoOrdered =0;
+    public static int numberOfEntreeThreeOrdered =0;
     public static int buns = 2;
     public static int cheese =4;
     public static int paddie = 0;
@@ -21,18 +21,39 @@ public class entreeThree {
     public String orderNumber = "";
     public static int totalNumberOfOrders =0;
     public static int numofOrders=0;
+    public String name = "Veggie Burger";
     
   
     
-    public static void reest(){
-        numberOfEntreeTwoOrdered = 0;
+     public static void reest(){
+        numberOfEntreeThreeOrdered = 0;
     }
     
     public static int getLetttuce(){
         return lettuce;
     }
     
-    public static void addBuns(int n){
+    public static int getBuns(){
+        return buns;
+    }
+    
+    public static int getPaddie(){
+        return paddie;
+    }
+    
+    public static int getTomato(){
+        return tomato;
+    }
+    
+    public static int getCheese(){
+        return cheese;
+    }
+    
+    public double getCostTotal(){
+        return orderCostTotal;
+    }
+    
+     public static void addBuns(int n){
         if(buns==0){
             orderCostTotal += n*0.25;
             buns =n;
@@ -43,32 +64,42 @@ public class entreeThree {
         }
     }
     
-    public static void removeBuns(int n){
-        if(buns-n <0){
-            //error
+       public static void addPaddie(int n){
+        if(paddie==0){
+            orderCostTotal += n*1.5;
+            paddie =n;
         }
         else{
-            buns -= (n-buns);
-            
+            paddie = paddie + (n-paddie);
+            orderCostTotal += ((n-paddie)* 0.25);
+        }
+    }
+     
+    
+    public void addLettuce(int n){
+        if (lettuce ==0){
+         lettuce += n;
+        //each slice of cheese extra say is 0.5 cents
+        orderCostTotal += (n*0.15);
+        }
+        else{
+          lettuce += (n-lettuce);
+          orderCostTotal += ((n-lettuce)*0.15);
         }
     }
     
-    public static int getPaddie(){
-        return paddie;
-    }
     
-    public static int getBuns(){
-        return buns;
-    }
-    
-    public double getCostTotal(){
-        return orderCostTotal;
-    }
     
     public void addCheese(int n){
+        if(cheese==0){
         cheese += n;
         //each slice of cheese extra say is 0.5 cents
         orderCostTotal += n*0.5;
+        }
+        else{
+            cheese+= (n-cheese);
+            orderCostTotal += ((n-cheese)*0.5);
+        }
     }
     
     public void removeCheese (int n){
@@ -81,6 +112,14 @@ public class entreeThree {
         
     }
     
+    public void removeBuns(int n){
+         if(buns-n < 0){
+            //print illegal operation
+        }
+        else{
+            orderCostTotal -= n*0.25;
+        }
+    }
     
     public static int getBunNum(){
         return buns;

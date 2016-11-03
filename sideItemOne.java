@@ -12,6 +12,7 @@ package kiosk;
 public class sideItemOne {
     public static int friesOrdered =0;
     public static double costOfFries = 4.99;
+    public String name = "Fries";
     
     public sideItemOne(){
         

@@ -304,7 +304,7 @@ public class orderTicket {
         entreeOneorders++;
     }
     
-    public static void add (presetOrder o1){
+    public static void addCombo (presetOrder o1){
         ordersofComboone[combos]= o1;
         combos++;
     }
@@ -350,6 +350,32 @@ public class orderTicket {
         return getEntreeOneTomato() + getEntreeTwoTomato() + getEntreeThreeTomato()+ getPresetTomato();
     }
     
+    public static int getTotalFries(){
+        int totalFries=0;
+        if (ordersOfsideItemOne.length ==0){
+            return 0;
+        }
+        else{
+            for(int i=0; i<ordersOfsideItemOne.length; i++){
+                totalFries +=ordersOfsideItemOne[i].getNumberOfFriesOrdered();
+                
+            }
+            return totalFries;
+        }
+    }
+    public static int getTotalDrinks(){
+        int totalDrinks=0;
+        if (ordersOfdrinkItemsordered.length ==0){
+            return 0;
+        }
+        else{
+            for(int i=0; i<ordersOfdrinkItemsordered.length; i++){
+                totalDrinks +=ordersOfdrinkItemsordered[i].returnDrinksTotal();
+                
+            }
+            return totalDrinks;
+        }
+    }
 }
     
     

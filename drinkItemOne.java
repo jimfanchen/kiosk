@@ -15,6 +15,7 @@ public class drinkItemOne {
     public static double totalCostMedium = 2.50;
     public static double totalCostLarge = 3.50;
     public static double totalCost = 0;
+    public String name = "Fountan drink";
     
     public drinkItemOne(){
         
@@ -41,6 +42,10 @@ public class drinkItemOne {
                 break;
                 
         }
+    }
+    
+    public static int returnDrinksTotal(){
+        return drinksOrdered;
     }
     
     

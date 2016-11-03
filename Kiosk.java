@@ -19,13 +19,13 @@ public static String actualInventory = ""; //updates every order.
 
 public static orderTicket[] orders = new orderTicket[1000]; 
 
-public static int totalBuns = 99999;
-public static int totalCheese = 99999;
-public static int totalPaddies = 99999;
-public static int totalLettuce = 9999; //1 means 1 layer
-public static int totalTomatoes = 9999;
-public static int totalDrinks = 99999;
-public static int totalFries = 9999999;
+public static int totalBuns = 0;
+public static int totalCheese = 0;
+public static int totalPaddies = 0;
+public static int totalLettuce = 0; //1 means 1 layer
+public static int totalTomatoes = 0;
+public static int totalDrinks = 0;
+public static int totalFries = 0;
 
 
     
@@ -48,7 +48,7 @@ public static int totalFries = 9999999;
            
             try {
                 inventorydefault = new FileWriter(inFile);
-                inventorydefault.write("0\r\n999\r\n999\r\n999\r\n999\r\n999\r\n999");
+                inventorydefault.write("0\r\n9999\r\n9999\r\n9999\r\n9999\r\n9999\r\n9999");
                 inventorydefault.close();
                
                 fileinput = new Scanner(inFile);
@@ -98,9 +98,56 @@ public static int totalFries = 9999999;
 //if medium button is pushed
          //numberofDrink = number in the box.
          drinkOrder.addDrink(numberOfDrinks, 2);
+         newOrder.addDrinkItem(drinkOrder);
          //if large button is pushed
          //numberofDrink = number in the box
         drinkOrder.addDrink(numberOfDrinks, 3);
+        newOrder.addDrinkItem(drinkOrder);
+        
+        //if first burger is selected
+        entreeOne orderOfEntreeOne = new entreeOne();
+        //if add cheese button is pressed
+        int extraCheese=0;
+        orderOfEntreeOne.addCheese(extraCheese);
+        int extraLettuce=0;
+        orderOfEntreeOne.addLettuce(extraLettuce);
+        int extraPaddies=0;
+        orderOfEntreeOne.addPaddie(extraPaddies);
+        int extraBuns=0;
+        orderOfEntreeOne.addBuns(extraBuns);
+        newOrder.addEntreeOne(orderOfEntreeOne);
+        
+        //if second burger is selected
+        entreeTwo orderOfEntreeTwo = new entreeTwo();
+        extraCheese=0;
+        orderOfEntreeTwo.addCheese(extraCheese);
+        extraLettuce=0;
+        orderOfEntreeTwo.addLettuce(extraLettuce);
+        extraPaddies=0;
+        orderOfEntreeTwo.addPaddie(extraPaddies);
+        extraBuns=0;
+        orderOfEntreeTwo.addBuns(extraBuns);
+        newOrder.addEntreeTwo(orderOfEntreeTwo);
+        
+        //if third burger is selected
+        entreeThree orderOfEntreeThree = new entreeThree();
+        extraCheese=0;
+        orderOfEntreeThree.addCheese(extraCheese);
+        extraLettuce=0;
+        orderOfEntreeThree.addLettuce(extraLettuce);
+        extraPaddies=0;
+        orderOfEntreeThree.addPaddie(extraPaddies);
+        extraBuns=0;
+        orderOfEntreeThree.addBuns(extraBuns);
+        newOrder.addEntreeThree(orderOfEntreeThree);
+        
+        //if fries are ordered
+        sideItemOne orderOfSideItemOne = new sideItemOne();
+        int extraFries=0;
+        orderOfSideItemOne.addNumberFries(extraFries);
+        newOrder.addSideItems(orderOfSideItemOne);
+        
+       
         
         
      
@@ -110,6 +157,8 @@ public static int totalFries = 9999999;
     totalCheese -= newOrder.getCheeseTotal();
     totalPaddies -= newOrder.getPaddieTotal();
     totalTomatoes -= newOrder.getTomatoTotal();
+    totalFries -= newOrder.getTotalFries();
+    totalDrinks -= newOrder.getTotalDrinks();
     
     
     ticketNumber++;

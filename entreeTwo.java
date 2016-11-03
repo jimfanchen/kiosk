@@ -5,6 +5,9 @@
  */
 package kiosk;
 
+import static kiosk.entreeOne.lettuce;
+import static kiosk.entreeOne.orderCostTotal;
+
 /**
  *
  * @author Jim
@@ -22,6 +25,7 @@ public class entreeTwo {
     public String orderNumber = "";
     public static int totalNumberOfOrders =0;
     public static int numofOrders=0;
+    public String name = "Double Burger";
     
     public entreeTwo(){
         
@@ -32,7 +36,7 @@ public class entreeTwo {
     }
     
     
-    public static int getToamto(){
+    public static int getTomato(){
         return tomato;
     }
     
@@ -91,6 +95,18 @@ public class entreeTwo {
             orderCostTotal -= n*0.5;
         }
         
+    }
+    
+    public void addLettuce(int n){
+        if (lettuce ==0){
+         lettuce += n;
+        //each slice of cheese extra say is 0.5 cents
+        orderCostTotal += (n*0.15);
+        }
+        else{
+          lettuce += (n-lettuce);
+          orderCostTotal += ((n-lettuce)*0.15);
+        }
     }
     
     

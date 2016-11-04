@@ -23,14 +23,10 @@ public class sideItemOne {
     }
     
     public static void addNumberFries(int n){
-       if(friesOrdered == 0){
+       
         friesOrdered += n;
         costOfFries = costOfFries + (costOfFries* n);
-       }
-       else{
-          costOfFries = costOfFries + (costOfFries * (n- friesOrdered));
-          friesOrdered = friesOrdered + (n-friesOrdered);
-       }
+       
     }
    
     public static void removeFries (int n){

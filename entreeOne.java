@@ -59,52 +59,37 @@ public class entreeOne {
     }
     
      public static void addBuns(int n){
-        if(buns==0){
-            orderCostTotal += n*0.25;
-            buns =n;
-        }
-        else{
-            buns = buns + (n-buns);
-            orderCostTotal += ((n-buns)* 0.25);
-        }
+        buns +=n;
+        orderCostTotal += n*0.25;
+            
+       
     }
     
        public static void addPaddie(int n){
-        if(paddie==0){
+            paddie +=n;
             orderCostTotal += n*1.5;
-            paddie =n;
-        }
-        else{
-            paddie = paddie + (n-paddie);
-            orderCostTotal += ((n-paddie)* 0.25);
-        }
+            
+       
     }
      
     
     public void addLettuce(int n){
-        if (lettuce ==0){
+        
          lettuce += n;
         //each slice of cheese extra say is 0.5 cents
         orderCostTotal += (n*0.15);
-        }
-        else{
-          lettuce += (n-lettuce);
-          orderCostTotal += ((n-lettuce)*0.15);
-        }
+       
     }
     
     
     
     public void addCheese(int n){
-        if(cheese==0){
+        
         cheese += n;
         //each slice of cheese extra say is 0.5 cents
         orderCostTotal += n*0.5;
-        }
-        else{
-            cheese+= (n-cheese);
-            orderCostTotal += ((n-cheese)*0.5);
-        }
+        
+        
     }
     
     public void removeCheese (int n){

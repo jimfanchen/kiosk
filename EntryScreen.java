@@ -10,7 +10,10 @@ package kiosk;
  * @author Trent
  */
 public class EntryScreen extends javax.swing.JFrame {
+//public static orderTicket[] orders = new orderTicket[1000]; 
+//public static int ticketNumber = 0;
 
+ 
     /**
      * Creates new form EntryScreen
      */
@@ -78,6 +81,7 @@ public class EntryScreen extends javax.swing.JFrame {
         dispose();
         OrderTypeScreen OTS = new OrderTypeScreen();
         OTS.setVisible(true);
+         
     }                                        
 
     /**

@@ -25,9 +25,7 @@ public class orderTicket {
     public static int tomato =0;
     public static int bun =0;
     public static int cheese =0;
-    public static int paddie =0;
-    
-  
+    public static int paddie =0;  
     public static drinkItemOne [] ordersOfdrinkItemsordered = new drinkItemOne[40];
     public static int combos = 0;
     
@@ -42,7 +40,7 @@ public class orderTicket {
         }
         else{
             for(int i=0; i<ordersOfEntreeOnes.length; i++){
-                entreeOneLettuces += ordersOfEntreeOnes[i].getLetttuce();
+                entreeOneLettuces += ordersOfEntreeOnes[i].getLettuce();
             }
             return entreeOneLettuces;
         }
@@ -55,7 +53,7 @@ public class orderTicket {
         }
         else{
             for(int i=0; i<ordersOfEntreeTwo.length; i++){
-                entreeTwoLettuces += ordersOfEntreeTwo[i].getLetttuce();
+                entreeTwoLettuces += ordersOfEntreeTwo[i].getLettuce();
             }
             return entreeTwoLettuces;
         }
@@ -68,7 +66,7 @@ public class orderTicket {
         }
         else{
             for(int i=0; i<ordersOfEntreeThree.length; i++){
-                entreeThreeLettuces += ordersOfEntreeThree[i].getLetttuce();
+                entreeThreeLettuces += ordersOfEntreeThree[i].getLettuce();
             }
             return entreeThreeLettuces;
         }
@@ -81,7 +79,7 @@ public class orderTicket {
         }
         else{
             for(int i=0; i<ordersofComboone.length; i++){
-                presetLettuces += ordersofComboone[i].theBurger.getLetttuce();
+                presetLettuces += ordersofComboone[i].theBurger.getLettuce();
             }
             return presetLettuces;
         }
@@ -301,7 +299,7 @@ public class orderTicket {
     
     public static void addEntreeOne(entreeOne e1){
         ordersOfEntreeOnes[entreeOneorders]=e1 ;
-        entreeOneorders++;
+        entreeOneorders++;       
     }
     
     public static void addCombo (presetOrder o1){

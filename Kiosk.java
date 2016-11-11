@@ -108,37 +108,37 @@ public static int totalFries = 0;
         entreeOne orderOfEntreeOne = new entreeOne();
         //if add cheese button is pressed
         int extraCheese=0;
-        orderOfEntreeOne.addCheese(extraCheese);
+        orderOfEntreeOne.setCheese(extraCheese);
         int extraLettuce=0;
-        orderOfEntreeOne.addLettuce(extraLettuce);
+        orderOfEntreeOne.setLettuce(extraLettuce);
         int extraPaddies=0;
-        orderOfEntreeOne.addPaddie(extraPaddies);
+        orderOfEntreeOne.setPaddie(extraPaddies);
         int extraBuns=0;
-        orderOfEntreeOne.addBuns(extraBuns);
+        orderOfEntreeOne.setBuns(extraBuns);
         newOrder.addEntreeOne(orderOfEntreeOne);
         
         //if second burger is selected
         entreeTwo orderOfEntreeTwo = new entreeTwo();
         extraCheese=0;
-        orderOfEntreeTwo.addCheese(extraCheese);
+        orderOfEntreeTwo.setCheese(extraCheese);
         extraLettuce=0;
-        orderOfEntreeTwo.addLettuce(extraLettuce);
+        orderOfEntreeTwo.setLettuce(extraLettuce);
         extraPaddies=0;
-        orderOfEntreeTwo.addPaddie(extraPaddies);
+        orderOfEntreeTwo.setPaddie(extraPaddies);
         extraBuns=0;
-        orderOfEntreeTwo.addBuns(extraBuns);
+        orderOfEntreeTwo.setBuns(extraBuns);
         newOrder.addEntreeTwo(orderOfEntreeTwo);
         
         //if third burger is selected
         entreeThree orderOfEntreeThree = new entreeThree();
         extraCheese=0;
-        orderOfEntreeThree.addCheese(extraCheese);
+        orderOfEntreeThree.setCheese(extraCheese);
         extraLettuce=0;
-        orderOfEntreeThree.addLettuce(extraLettuce);
+        orderOfEntreeThree.setLettuce(extraLettuce);
         extraPaddies=0;
-        orderOfEntreeThree.addPaddie(extraPaddies);
+        orderOfEntreeThree.setPaddie(extraPaddies);
         extraBuns=0;
-        orderOfEntreeThree.addBuns(extraBuns);
+        orderOfEntreeThree.setBuns(extraBuns);
         newOrder.addEntreeThree(orderOfEntreeThree);
         
         //if fries are ordered

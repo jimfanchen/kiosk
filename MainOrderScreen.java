@@ -4,36 +4,25 @@
  * and open the template in the editor.
  */
 package kiosk;
-import java.util.*;
-import java.math.*;
-import java.io.*;
 
 /**
  *
  * @author Trent
  */
 public class MainOrderScreen extends javax.swing.JFrame {
-
-public static String numberPrefix = "Order #";
-public static String inventoryDisplay = ""; //This is to just display how much inventory is there at start of day. Doesn't change
-public static String actualInventory = ""; //updates every order.
-public static orderTicket newOrder = new orderTicket();
-
-public static int totalBuns = 999;
-public static int totalCheese = 999;
-public static int totalPaddies = 999;
-public static int totalLettuce = 999; //1 means 1 layer
-public static int totalTomatoes = 999;
-public static int totalDrinks = 999;
-public static int totalFries = 999;
  public static presetOrder[] ordersofComboone = new presetOrder[40]; 
     public static entreeOne [] ordersOfEntreeOnes = new entreeOne[40];
     public static entreeTwo [] ordersOfEntreeTwo = new entreeTwo[40];
     public static entreeThree [] ordersOfEntreeThree = new entreeThree[40];
     public static sideItemOne [] ordersOfsideItemOne = new sideItemOne[40];
-    public static int entreeOneOrders =0;
-    public static int entreeTwoOrders =0;
-    public static int entreeThreeOrders =0;
+    public static entreeOne entreeOneOrder = new entreeOne();
+    public static entreeTwo entreeTwoOrder = new entreeTwo();
+    public static entreeThree entreeThreeOrder = new entreeThree();
+    public static sideItemOne orderOfFries = new sideItemOne();
+    public static drinkItemOne drinks = new drinkItemOne();
+    public static int entreeOneorders =0;
+    public static int entreeTwoorders =0;
+    public static int entreeThreeorders =0;
     public static int sideItemOneordered =0;
     public static int drinksOrdered =0;
     public static int lettuce =0;
@@ -43,14 +32,14 @@ public static int totalFries = 999;
     public static int paddie =0;  
     public static drinkItemOne [] ordersOfdrinkItemsordered = new drinkItemOne[40];
     public static int combos = 0;
-
-
+    public static int ticketNumber = 0;
+    public static orderTicket newOrder = new orderTicket();
+    
     /**
      * Creates new form MainOrderScreen
      */
     public MainOrderScreen() {
         initComponents();
-        
     }
 
     /**
@@ -61,7 +50,6 @@ public static int totalFries = 999;
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        
 
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
@@ -75,6 +63,7 @@ public static int totalFries = 999;
         buttonGroup2 = new javax.swing.ButtonGroup();
         buttonGroup3 = new javax.swing.ButtonGroup();
         jToggleButton2 = new javax.swing.JToggleButton();
+        jLabel43 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -107,8 +96,6 @@ public static int totalFries = 999;
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jComboBox9 = new javax.swing.JComboBox<>();
         jLabel30 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
         jComboBox4 = new javax.swing.JComboBox<>();
@@ -127,8 +114,6 @@ public static int totalFries = 999;
         jLabel31 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jComboBox7 = new javax.swing.JComboBox<>();
-        jLabel26 = new javax.swing.JLabel();
-        jComboBox8 = new javax.swing.JComboBox<>();
         Combo3Panel = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
@@ -142,33 +127,34 @@ public static int totalFries = 999;
         jComboBox12 = new javax.swing.JComboBox<>();
         jLabel38 = new javax.swing.JLabel();
         jComboBox13 = new javax.swing.JComboBox<>();
-        jLabel39 = new javax.swing.JLabel();
-        jComboBox14 = new javax.swing.JComboBox<>();
         jLabel40 = new javax.swing.JLabel();
         jButton16 = new javax.swing.JButton();
         Burger1Panel = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
-        jLabel43 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
         jComboBox15 = new javax.swing.JComboBox<>();
         jLabel45 = new javax.swing.JLabel();
         jComboBox16 = new javax.swing.JComboBox<>();
         jLabel46 = new javax.swing.JLabel();
         jComboBox17 = new javax.swing.JComboBox<>();
-        jToggleButton1 = new javax.swing.JToggleButton();
         jLabel47 = new javax.swing.JLabel();
+        jButton20 = new javax.swing.JButton();
         Burger2Panel = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
-        jLabel49 = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
         jComboBox18 = new javax.swing.JComboBox<>();
         jLabel51 = new javax.swing.JLabel();
         jComboBox19 = new javax.swing.JComboBox<>();
         jButton15 = new javax.swing.JButton();
         jLabel52 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jComboBox8 = new javax.swing.JComboBox<>();
+        jLabel39 = new javax.swing.JLabel();
+        jComboBox9 = new javax.swing.JComboBox<>();
         Burger3Panel = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel53 = new javax.swing.JLabel();
@@ -252,8 +238,9 @@ public static int totalFries = 999;
 
         jToggleButton2.setText("jToggleButton2");
 
+        jLabel43.setText("jLabel43");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(700, 500));
 
         jButton1.setText("Cancel Order");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -379,38 +366,99 @@ public static int totalFries = 999;
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel6.setText("Hamburger");
 
-        jLabel14.setText("Buns");
+        jLabel14.setText("Paddie");
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Regular", "Extra", "None" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+                switch (jComboBox2.getSelectedItem().toString()) {
+                    case "Extra":
+                        entreeOneOrder.setPaddie(2);
+                        jLabel18.setText("Price: "+entreeOne.getCostTotal());
+                        break;
+                    case "Regular":
+                        entreeOneOrder.setPaddie(1);
+                        entreeOneOrder.orderCostTotal = 6.99;
+                        jLabel18.setText("Price: "+ entreeOne.getCostTotal());
+                        break;
+                    case "None":
+                        entreeOneOrder.setPaddie(0);
+                        entreeOneOrder.orderCostTotal -= 1;
+                        jLabel18.setText("Price: "+ entreeOne.getCostTotal());
+                        break;
+                    default:
+                        break;
+                }
+                
+            }
+        });
 
         jLabel15.setText("Tomato");
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Regular", "Extra", "None" }));
-        
-        jLabel18.setText("Price: "+ entreeOne.getCostTotal());
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+                switch (jComboBox3.getSelectedItem().toString()) {
+                    case "Extra":
+                        entreeOneOrder.setTomato(2);
+                        jLabel18.setText("Price: "+entreeOne.getCostTotal());
+                        break;
+                    case "Regular":
+                        entreeOneOrder.setTomato(1);
+                        entreeOneOrder.orderCostTotal = 6.99;
+                        jLabel18.setText("Price: "+ entreeOne.getCostTotal());
+                        break;
+                    case "None":
+                        entreeOneOrder.setTomato(0);
+                        entreeOneOrder.orderCostTotal -= .4;
+                        jLabel18.setText("Price: "+ entreeOne.getCostTotal());
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+
+        jLabel18.setText("Price: " + entreeOne.getCostTotal());
 
         jButton12.setText("Add to Order");
 
         jLabel19.setText("All time Classic! Serverd with");
 
-        jLabel20.setText("A patty, Buns, lettuce, tomatoes, ");
+        jLabel20.setText("A patty, onion, lettuce, tomatoes, ");
 
-        jLabel21.setText("And more paddie!");
-
-        jLabel28.setText("Paddies");
-
-        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Regular", "Extra", "None" }));
-        jComboBox9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox9ActionPerformed(evt);
-            }
-        });
+        jLabel21.setText("And our signature sauce!");
 
         jLabel30.setText("Plus fries and a drink");
 
         jLabel48.setText("Lettuce");
 
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Regular", "Extra", "None" }));
+        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox4ActionPerformed(evt);
+                switch (jComboBox4.getSelectedItem().toString()) {
+                    case "Extra":
+                        entreeOneOrder.setLettuce(2);
+                        jLabel18.setText("Price: "+entreeOne.getCostTotal());
+                        break;
+                    case "Regular":
+                        entreeOneOrder.setLettuce(1);
+                        entreeOneOrder.orderCostTotal = 6.99;
+                        jLabel18.setText("Price: "+ entreeOne.getCostTotal());
+                        break;
+                    case "None":
+                        entreeOneOrder.setLettuce(0);
+                        entreeOneOrder.orderCostTotal -= 0.25;
+                        jLabel18.setText("Price: "+ entreeOne.getCostTotal());
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
 
         javax.swing.GroupLayout Combo1PanelLayout = new javax.swing.GroupLayout(Combo1Panel);
         Combo1Panel.setLayout(Combo1PanelLayout);
@@ -419,45 +467,41 @@ public static int totalFries = 999;
             .addGroup(Combo1PanelLayout.createSequentialGroup()
                 .addGroup(Combo1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Combo1PanelLayout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(jLabel6))
-                    .addGroup(Combo1PanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel14)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(Combo1PanelLayout.createSequentialGroup()
-                .addGroup(Combo1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel14))
                     .addGroup(Combo1PanelLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(137, 137, 137)
                         .addGroup(Combo1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel15)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(Combo1PanelLayout.createSequentialGroup()
-                                .addGap(36, 36, 36)
+                                .addGap(53, 53, 53)
+                                .addComponent(jLabel6))
+                            .addGroup(Combo1PanelLayout.createSequentialGroup()
+                                .addGap(9, 9, 9)
                                 .addComponent(jLabel19))
+                            .addComponent(jLabel20)
                             .addGroup(Combo1PanelLayout.createSequentialGroup()
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(Combo1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel28)
-                                    .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel48)))
-                    .addGroup(Combo1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel18)
-                        .addGroup(Combo1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(Combo1PanelLayout.createSequentialGroup()
-                                .addGap(37, 37, 37)
-                                .addComponent(jLabel20))
-                            .addGroup(Combo1PanelLayout.createSequentialGroup()
-                                .addGap(60, 60, 60)
+                                .addGap(23, 23, 23)
                                 .addGroup(Combo1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(Combo1PanelLayout.createSequentialGroup()
                                         .addGap(10, 10, 10)
                                         .addComponent(jLabel30))
-                                    .addComponent(jLabel21)))))
+                                    .addComponent(jLabel21)
+                                    .addComponent(jLabel15)
+                                    .addGroup(Combo1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel18)
+                                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addComponent(jLabel48)
+                .addGap(96, 96, 96))
+            .addGroup(Combo1PanelLayout.createSequentialGroup()
+                .addGroup(Combo1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Combo1PanelLayout.createSequentialGroup()
-                        .addGap(147, 147, 147)
+                        .addContainerGap()
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(257, 257, 257)
+                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Combo1PanelLayout.createSequentialGroup()
+                        .addGap(152, 152, 152)
                         .addComponent(jButton12)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -477,24 +521,18 @@ public static int totalFries = 999;
                 .addGap(18, 18, 18)
                 .addGroup(Combo1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(jLabel28))
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel48))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Combo1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51)
+                .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel15)
-                .addGap(4, 4, 4)
-                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Combo1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel48)
-                    .addComponent(jLabel18))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Combo1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton12))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addComponent(jButton12)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         jPanel1.add(Combo1Panel, "card2");
@@ -504,51 +542,133 @@ public static int totalFries = 999;
 
         jLabel17.setText("Same as our great hamburger");
 
-        jLabel22.setText("But with a slice of cheese!");
+        jLabel22.setText("But with a slice extra of cheese!");
 
-        jLabel23.setText("Buns");
+        jLabel23.setText("Paddies");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Regular", "Extra", "None" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+                switch (jComboBox1.getSelectedItem().toString()) {
+                    case "Extra":
+                        entreeTwoOrder.setLettuce(2);
+                        jLabel29.setText("Price: "+entreeTwo.getCostTotal());
+                        break;
+                    case "Regular":
+                        entreeTwoOrder.setLettuce(1);
+                        entreeTwoOrder.orderCostTotal = 8.99;
+                        jLabel29.setText("Price: "+ entreeTwo.getCostTotal());
+                        break;
+                    case "None":
+                        entreeTwoOrder.setLettuce(0);
+                        entreeTwoOrder.orderCostTotal -= 1;
+                        jLabel29.setText("Price: "+ entreeTwo.getCostTotal());
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
 
         jLabel24.setText("Tomato");
 
         jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Regular", "Extra", "None" }));
+        jComboBox5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox5ActionPerformed(evt);
+                 switch (jComboBox5.getSelectedItem().toString()) {
+                    case "Extra":
+                        entreeTwoOrder.setTomato(2);
+                        jLabel29.setText("Price: "+entreeTwo.getCostTotal());
+                        break;
+                    case "Regular":
+                        entreeTwoOrder.setTomato(1);
+                        entreeTwoOrder.orderCostTotal = 8.99;
+                        jLabel29.setText("Price: "+ entreeTwo.getCostTotal());
+                        break;
+                    case "None":
+                        entreeTwoOrder.setTomato(0);
+                        entreeTwoOrder.orderCostTotal -= 0.4;
+                        jLabel29.setText("Price: "+ entreeTwo.getCostTotal());
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
 
         jLabel25.setText("Lettuce");
 
         jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Regular", "Extra", "None" }));
+        jComboBox6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox6ActionPerformed(evt);
+                 switch (jComboBox6.getSelectedItem().toString()) {
+                    case "Extra":
+                        entreeTwoOrder.setLettuce(2);
+                        jLabel29.setText("Price: "+entreeTwo.getCostTotal());
+                        break;
+                    case "Regular":
+                        entreeTwoOrder.setLettuce(1);
+                        entreeTwoOrder.orderCostTotal = 8.99;
+                        jLabel29.setText("Price: "+ entreeTwo.getCostTotal());
+                        break;
+                    case "None":
+                        entreeTwoOrder.setLettuce(0);
+                        entreeTwoOrder.orderCostTotal -= 0.25;
+                        jLabel29.setText("Price: "+ entreeTwo.getCostTotal());
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
 
         jButton14.setText("Add to Order");
 
-        jLabel29.setText("Price: $6.66");
+        jLabel29.setText("Price: "+entreeTwoOrder.getCostTotal());
 
         jLabel31.setText("Plus fries and a drink");
 
         jLabel16.setText("Cheese");
 
         jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Regular", "Extra", "None" }));
-
-        jLabel26.setText("Paddies");
-
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Regular", "Extra", "None" }));
+        jComboBox7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox7ActionPerformed(evt);
+                 switch (jComboBox7.getSelectedItem().toString()) {
+                    case "Extra":
+                        entreeTwoOrder.setLettuce(2);
+                        jLabel29.setText("Price: "+entreeTwo.getCostTotal());
+                        break;
+                    case "Regular":
+                        entreeTwoOrder.setLettuce(1);
+                        entreeTwoOrder.orderCostTotal = 8.99;
+                        jLabel29.setText("Price: "+ entreeTwo.getCostTotal());
+                        break;
+                    case "None":
+                        entreeTwoOrder.setLettuce(0);
+                        entreeTwoOrder.orderCostTotal -= 0.5;
+                        jLabel29.setText("Price: "+ entreeTwo.getCostTotal());
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
 
         javax.swing.GroupLayout Combo2PanelLayout = new javax.swing.GroupLayout(Combo2Panel);
         Combo2Panel.setLayout(Combo2PanelLayout);
         Combo2PanelLayout.setHorizontalGroup(
             Combo2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Combo2PanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(Combo2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(Combo2PanelLayout.createSequentialGroup()
+                .addGroup(Combo2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Combo2PanelLayout.createSequentialGroup()
-                        .addGroup(Combo2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel25))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(Combo2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton14)
-                            .addComponent(jLabel29)))
+                        .addGap(175, 175, 175)
+                        .addComponent(jLabel8))
                     .addGroup(Combo2PanelLayout.createSequentialGroup()
-                        .addGap(0, 228, Short.MAX_VALUE)
+                        .addGap(142, 142, 142)
                         .addGroup(Combo2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel17)
                             .addGroup(Combo2PanelLayout.createSequentialGroup()
@@ -557,36 +677,43 @@ public static int totalFries = 999;
                                     .addGroup(Combo2PanelLayout.createSequentialGroup()
                                         .addGap(10, 10, 10)
                                         .addComponent(jLabel31))
-                                    .addComponent(jLabel22))))
-                        .addGap(32, 32, 32)))
-                .addGap(48, 48, 48))
-            .addGroup(Combo2PanelLayout.createSequentialGroup()
+                                    .addComponent(jLabel22))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Combo2PanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(Combo2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Combo2PanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Combo2PanelLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addComponent(jLabel23)
+                        .addGap(85, 85, 85)
                         .addGroup(Combo2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel23)
-                            .addComponent(jLabel24))
-                        .addGap(18, 18, 18)
+                            .addComponent(jLabel24)
+                            .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                         .addGroup(Combo2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel26)
-                            .addComponent(jLabel16)
-                            .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(Combo2PanelLayout.createSequentialGroup()
+                                .addComponent(jLabel25)
+                                .addGap(78, 78, 78)
+                                .addComponent(jLabel16))
+                            .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(48, 48, 48))
                     .addGroup(Combo2PanelLayout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addComponent(jLabel8)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22))
+                    .addGroup(Combo2PanelLayout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addComponent(jButton14)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(Combo2PanelLayout.createSequentialGroup()
+                .addGap(185, 185, 185)
+                .addComponent(jLabel29)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         Combo2PanelLayout.setVerticalGroup(
             Combo2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Combo2PanelLayout.createSequentialGroup()
-                .addGap(13, 13, 13)
+                .addGap(8, 8, 8)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel17)
@@ -594,31 +721,23 @@ public static int totalFries = 999;
                 .addComponent(jLabel22)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel31)
-                .addGap(29, 29, 29)
+                .addGap(34, 34, 34)
                 .addGroup(Combo2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23)
-                    .addComponent(jLabel16))
+                    .addComponent(jLabel16)
+                    .addComponent(jLabel24)
+                    .addComponent(jLabel25))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Combo2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Combo2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel24)
-                    .addComponent(jLabel26))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Combo2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Combo2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel29)
-                    .addComponent(jLabel25))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Combo2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton14)
                     .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addGap(51, 51, 51)
+                .addComponent(jLabel29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton14)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         jPanel1.add(Combo2Panel, "card2");
@@ -632,9 +751,32 @@ public static int totalFries = 999;
 
         jLabel34.setText("Plus fries and a drink");
 
-        jLabel35.setText("Buns");
+        jLabel35.setText("Paddie");
 
         jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Regular", "Extra", "None" }));
+        jComboBox10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox10ActionPerformed(evt);
+                 switch (jComboBox10.getSelectedItem().toString()) {
+                    case "Extra":
+                        entreeThreeOrder.setPaddie(2);
+                        jLabel40.setText("Price: "+entreeThree.getCostTotal());
+                        break;
+                    case "Regular":
+                        entreeThreeOrder.setPaddie(1);
+                        entreeThreeOrder.orderCostTotal = 10.5;
+                        jLabel40.setText("Price: "+ entreeThree.getCostTotal());
+                        break;
+                    case "None":
+                        entreeThreeOrder.setPaddie(0);
+                        entreeThreeOrder.orderCostTotal -= 1;
+                        jLabel40.setText("Price: "+ entreeThree.getCostTotal());
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
 
         jLabel36.setText("Tomato");
 
@@ -642,22 +784,82 @@ public static int totalFries = 999;
         jComboBox11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox11ActionPerformed(evt);
+                 switch (jComboBox10.getSelectedItem().toString()) {
+                    case "Extra":
+                        entreeThreeOrder.setTomato(2);
+                        jLabel40.setText("Price: "+entreeThree.getCostTotal());
+                        break;
+                    case "Regular":
+                        entreeThreeOrder.setTomato(1);
+                        entreeThreeOrder.orderCostTotal = 10.5;
+                        jLabel40.setText("Price: "+ entreeThree.getCostTotal());
+                        break;
+                    case "None":
+                        entreeThreeOrder.setTomato(0);
+                        entreeThreeOrder.orderCostTotal -= 0.4;
+                        jLabel40.setText("Price: "+ entreeThree.getCostTotal());
+                        break;
+                    default:
+                        break;
+                }
             }
         });
 
         jLabel37.setText("Lettuce");
 
         jComboBox12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Regular", "Extra", "None" }));
+        jComboBox12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox12ActionPerformed(evt);
+                 switch (jComboBox12.getSelectedItem().toString()) {
+                    case "Extra":
+                        entreeThreeOrder.setLettuce(2);
+                        jLabel40.setText("Price: "+entreeThree.getCostTotal());
+                        break;
+                    case "Regular":
+                        entreeThreeOrder.setLettuce(1);
+                        entreeThreeOrder.orderCostTotal = 10.5;
+                        jLabel40.setText("Price: "+ entreeThree.getCostTotal());
+                        break;
+                    case "None":
+                        entreeThreeOrder.setLettuce(0);
+                        entreeThreeOrder.orderCostTotal -= 0.25;
+                        jLabel40.setText("Price: "+ entreeThree.getCostTotal());
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
 
         jLabel38.setText("Cheese");
 
         jComboBox13.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Regular", "Extra", "None" }));
+        jComboBox13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox13ActionPerformed(evt);
+                switch (jComboBox12.getSelectedItem().toString()) {
+                    case "Extra":
+                        entreeThreeOrder.setCheese(2);
+                        jLabel40.setText("Price: "+entreeThree.getCostTotal());
+                        break;
+                    case "Regular":
+                        entreeThreeOrder.setCheese(1);
+                        entreeThreeOrder.orderCostTotal = 10.5;
+                        jLabel40.setText("Price: "+ entreeThree.getCostTotal());
+                        break;
+                    case "None":
+                        entreeThreeOrder.setCheese(0);
+                        entreeThreeOrder.orderCostTotal -= 0.25;
+                        jLabel40.setText("Price: "+ entreeThree.getCostTotal());
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
 
-        jLabel39.setText("Paddies");
-
-        jComboBox14.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Regular", "Extra", "None" }));
-
-        jLabel40.setText("Price: $7.77");
+        jLabel40.setText("Price: " + entreeThreeOrder.getCostTotal());
 
         jButton16.setText("Add to Order");
 
@@ -665,58 +867,51 @@ public static int totalFries = 999;
         Combo3Panel.setLayout(Combo3PanelLayout);
         Combo3PanelLayout.setHorizontalGroup(
             Combo3PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Combo3PanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel38)
-                .addGap(125, 125, 125))
+            .addGroup(Combo3PanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Combo3PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBox10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel35))
+                .addGap(46, 46, 46)
+                .addGroup(Combo3PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel36)
+                    .addComponent(jComboBox11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addGroup(Combo3PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel37)
+                    .addComponent(jComboBox12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(55, 55, 55)
+                .addGroup(Combo3PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel38)
+                    .addComponent(jComboBox13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16))
             .addGroup(Combo3PanelLayout.createSequentialGroup()
                 .addGroup(Combo3PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Combo3PanelLayout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(jLabel7))
+                        .addGap(184, 184, 184)
+                        .addComponent(jLabel40))
                     .addGroup(Combo3PanelLayout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(jLabel33))
-                    .addGroup(Combo3PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(Combo3PanelLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(Combo3PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel35)
-                                .addComponent(jComboBox12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(Combo3PanelLayout.createSequentialGroup()
-                                    .addGroup(Combo3PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jComboBox10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel36))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(Combo3PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel39)
-                                        .addComponent(jComboBox13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(Combo3PanelLayout.createSequentialGroup()
-                                    .addGroup(Combo3PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jComboBox11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel37))
-                                    .addGroup(Combo3PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(Combo3PanelLayout.createSequentialGroup()
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(jComboBox14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(Combo3PanelLayout.createSequentialGroup()
-                                            .addGap(63, 63, 63)
-                                            .addGroup(Combo3PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel40)
-                                                .addComponent(jButton16)))))))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Combo3PanelLayout.createSequentialGroup()
-                            .addGap(54, 54, 54)
-                            .addGroup(Combo3PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel32)
-                                .addGroup(Combo3PanelLayout.createSequentialGroup()
-                                    .addGap(8, 8, 8)
-                                    .addComponent(jLabel34))))))
-                .addGap(0, 231, Short.MAX_VALUE))
+                        .addGap(161, 161, 161)
+                        .addComponent(jButton16))
+                    .addGroup(Combo3PanelLayout.createSequentialGroup()
+                        .addGap(149, 149, 149)
+                        .addGroup(Combo3PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Combo3PanelLayout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(jLabel7))
+                            .addGroup(Combo3PanelLayout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addComponent(jLabel33))
+                            .addComponent(jLabel32)
+                            .addGroup(Combo3PanelLayout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(jLabel34)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Combo3PanelLayout.setVerticalGroup(
             Combo3PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Combo3PanelLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addContainerGap()
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel32)
@@ -724,115 +919,106 @@ public static int totalFries = 999;
                 .addComponent(jLabel33)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel34)
-                .addGap(23, 23, 23)
+                .addGap(28, 28, 28)
                 .addGroup(Combo3PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel35)
-                    .addComponent(jLabel38))
+                    .addComponent(jLabel38)
+                    .addComponent(jLabel36)
+                    .addComponent(jLabel37))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Combo3PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Combo3PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel36)
-                    .addComponent(jLabel39))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Combo3PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
+                .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Combo3PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel37)
-                    .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Combo3PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton16))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addComponent(jButton16)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         jPanel1.add(Combo3Panel, "card2");
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel9.setText("V.O. Burger");
+        jLabel9.setText("V. O. burger");
 
-        jLabel41.setText("A burger served on a lettuce bun");
+        jLabel41.setText("An all time classic! Served with");
 
-        jLabel42.setText("Onion, tomato, a portabella cap,");
+        jLabel42.setText("A patty, lettuce, tomato, and onion");
 
-        jLabel43.setText("And our special sauce!");
+        jLabel44.setText("Lettuce");
 
-        jLabel44.setText("Onion");
-
-        jComboBox15.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox15.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Regular", "Extra", "None" }));
+        jComboBox15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox15ActionPerformed(evt);
+            }
+        });
 
         jLabel45.setText("Tomato");
 
-        jComboBox16.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox16.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Regular", "Extra", "None" }));
+        jComboBox16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox16ActionPerformed(evt);
+            }
+        });
 
-        jLabel46.setText("Sauce");
+        jLabel46.setText("Paddie");
 
-        jComboBox17.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jToggleButton1.setText("Add to Order");
+        jComboBox17.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Regular", "Extra", "None" }));
+        jComboBox17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox17ActionPerformed(evt);
+            }
+        });
 
         jLabel47.setText("Price: $4.44");
+
+        jButton20.setText("Add to Order");
 
         javax.swing.GroupLayout Burger1PanelLayout = new javax.swing.GroupLayout(Burger1Panel);
         Burger1Panel.setLayout(Burger1PanelLayout);
         Burger1PanelLayout.setHorizontalGroup(
             Burger1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Burger1PanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(10, 10, 10)
+                .addGroup(Burger1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel44)
+                    .addComponent(jComboBox15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel45)
+                    .addComponent(jComboBox16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel46))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
                 .addGroup(Burger1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel47)
-                    .addComponent(jToggleButton1))
-                .addGap(48, 48, 48))
+                    .addComponent(jButton20))
+                .addGap(64, 64, 64))
             .addGroup(Burger1PanelLayout.createSequentialGroup()
-                .addGroup(Burger1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(Burger1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(Burger1PanelLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel44))
-                        .addGroup(Burger1PanelLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jComboBox15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(Burger1PanelLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel45))
-                        .addGroup(Burger1PanelLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jComboBox16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(Burger1PanelLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(Burger1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jComboBox17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel46)))
-                        .addGroup(Burger1PanelLayout.createSequentialGroup()
-                            .addGap(97, 97, 97)
-                            .addComponent(jLabel9))
-                        .addGroup(Burger1PanelLayout.createSequentialGroup()
-                            .addGap(51, 51, 51)
-                            .addComponent(jLabel41)))
-                    .addGroup(Burger1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(Burger1PanelLayout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addComponent(jLabel43))
-                        .addComponent(jLabel42)))
-                .addContainerGap(251, Short.MAX_VALUE))
+                .addGroup(Burger1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Burger1PanelLayout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addComponent(jLabel41))
+                    .addGroup(Burger1PanelLayout.createSequentialGroup()
+                        .addGap(122, 122, 122)
+                        .addComponent(jLabel42))
+                    .addGroup(Burger1PanelLayout.createSequentialGroup()
+                        .addGap(167, 167, 167)
+                        .addComponent(jLabel9)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Burger1PanelLayout.setVerticalGroup(
             Burger1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Burger1PanelLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel41)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel42)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel43)
-                .addGap(30, 30, 30)
+                .addGap(48, 48, 48)
                 .addComponent(jLabel44)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBox15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -847,61 +1033,99 @@ public static int totalFries = 999;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Burger1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButton1))
+                    .addComponent(jButton20))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
         jPanel1.add(Burger1Panel, "card2");
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel10.setText("Man Burger");
+        jLabel10.setText("Cheese Burger");
 
-        jLabel27.setText("3 Juicy patties with 3 slices of cheese");
+        jLabel27.setText("Just like our great hamburger");
 
-        jLabel49.setText("And, of course, layered with bacon!");
-
-        jLabel50.setText("Cheese");
+        jLabel50.setText("Lettuce");
 
         jComboBox18.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Regular", "Extra", "None" }));
+        jComboBox18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox18ActionPerformed(evt);
+            }
+        });
 
-        jLabel51.setText("Bacon");
+        jLabel51.setText("Tomato");
 
         jComboBox19.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Regular", "Extra", "None" }));
+        jComboBox19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox19ActionPerformed(evt);
+            }
+        });
 
         jButton15.setText("Add to Order");
 
         jLabel52.setText("Price: $9.99");
+
+        jLabel26.setText("But add some cheese!");
+
+        jLabel28.setText("Paddie");
+
+        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Regular", "Extra", "None" }));
+        jComboBox8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox8ActionPerformed(evt);
+            }
+        });
+
+        jLabel39.setText("Cheese");
+
+        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Regular", "Extra", "None" }));
+        jComboBox9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox9ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Burger2PanelLayout = new javax.swing.GroupLayout(Burger2Panel);
         Burger2Panel.setLayout(Burger2PanelLayout);
         Burger2PanelLayout.setHorizontalGroup(
             Burger2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Burger2PanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(Burger2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel50)
-                    .addComponent(jComboBox18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel51)
-                    .addComponent(jComboBox19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Burger2PanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(Burger2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton15)
-                    .addComponent(jLabel52))
-                .addGap(48, 48, 48))
-            .addGroup(Burger2PanelLayout.createSequentialGroup()
-                .addGap(96, 96, 96)
-                .addComponent(jLabel10)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Burger2PanelLayout.createSequentialGroup()
-                .addGap(0, 240, Short.MAX_VALUE)
                 .addGroup(Burger2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Burger2PanelLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel49))
-                    .addComponent(jLabel27))
-                .addGap(38, 38, 38))
+                        .addGap(172, 172, 172)
+                        .addComponent(jLabel10))
+                    .addGroup(Burger2PanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(Burger2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel51)
+                            .addGroup(Burger2PanelLayout.createSequentialGroup()
+                                .addComponent(jLabel50)
+                                .addGap(70, 70, 70)
+                                .addComponent(jLabel39))
+                            .addComponent(jComboBox19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(Burger2PanelLayout.createSequentialGroup()
+                                .addGap(106, 106, 106)
+                                .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(Burger2PanelLayout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addGroup(Burger2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel27)
+                            .addGroup(Burger2PanelLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel26)))))
+                .addContainerGap(173, Short.MAX_VALUE))
+            .addGroup(Burger2PanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Burger2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel28)
+                    .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(Burger2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel52)
+                    .addComponent(jButton15))
+                .addGap(67, 67, 67))
         );
         Burger2PanelLayout.setVerticalGroup(
             Burger2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -911,20 +1135,28 @@ public static int totalFries = 999;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel27)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel49)
-                .addGap(48, 48, 48)
-                .addComponent(jLabel50)
+                .addComponent(jLabel26)
+                .addGap(28, 28, 28)
+                .addGroup(Burger2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel50)
+                    .addComponent(jLabel39))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(Burger2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel51)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBox19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel52)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton15)
-                .addGap(23, 23, 23))
+                .addGroup(Burger2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel28)
+                    .addComponent(jLabel52))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Burger2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton15))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         jPanel1.add(Burger2Panel, "card2");
@@ -936,34 +1168,69 @@ public static int totalFries = 999;
 
         jLabel54.setText("Patty");
 
-        jComboBox20.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox20.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
+        jComboBox20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox20ActionPerformed(evt);
+            }
+        });
 
         jLabel55.setText("Bun");
 
-        jComboBox21.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox21.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Traditional", "lettuce" }));
+        jComboBox21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox21ActionPerformed(evt);
+            }
+        });
 
         jLabel56.setText("Toppings");
 
         jRadioButton4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jRadioButton4.setText("Tomato");
+        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton4ActionPerformed(evt);
+            }
+        });
 
         jLabel57.setText("Comdiments");
 
         jRadioButton3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jRadioButton3.setText("Ketchup");
+        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton3ActionPerformed(evt);
+            }
+        });
 
         jRadioButton5.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jRadioButton5.setText("Mayo");
+        jRadioButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton5ActionPerformed(evt);
+            }
+        });
 
         jRadioButton6.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jRadioButton6.setText("Mustard");
+        jRadioButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton6ActionPerformed(evt);
+            }
+        });
 
         jRadioButton7.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jRadioButton7.setText("Special Sauce");
+        jRadioButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton7ActionPerformed(evt);
+            }
+        });
 
         jButton17.setText("Add to Order");
 
-        jLabel58.setText("Price:");
+        jLabel58.setText("Price: $0.00");
 
         jRadioButton8.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jRadioButton8.setText("Lettuce");
@@ -974,7 +1241,12 @@ public static int totalFries = 999;
         });
 
         jRadioButton1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jRadioButton1.setText("Onion");
+        jRadioButton1.setText("Paddie");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Burger3PanelLayout = new javax.swing.GroupLayout(Burger3Panel);
         Burger3Panel.setLayout(Burger3PanelLayout);
@@ -1076,40 +1348,68 @@ public static int totalFries = 999;
         jLabel63.setText("Salad");
 
         jComboBox22.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5" }));
+        jComboBox22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox22ActionPerformed(evt);
+                switch (jComboBox22.getSelectedItem().toString()) {
+                    case "0":
+                        orderOfFries.setFries(0);
+                        jLabel64.setText("Price: "+sideItemOne.getCostTotal());
+                        break;
+                    case "1":
+                        orderOfFries.setFries(1);
+                        jLabel64.setText("Price: "+sideItemOne.getCostTotal());
+                        break;
+                    case "2":
+                        orderOfFries.setFries(2);
+                        jLabel64.setText("Price: "+sideItemOne.getCostTotal());
+                        break;
+                    case "3":
+                       orderOfFries.setFries(3);
+                        jLabel64.setText("Price: "+sideItemOne.getCostTotal());
+                        break;
+                    case "4":
+                       orderOfFries.setFries(4);
+                        jLabel64.setText("Price: "+sideItemOne.getCostTotal());
+                        break;
+                    case "5":
+                        orderOfFries.setFries(5);
+                        jLabel64.setText("Price: "+sideItemOne.getCostTotal());
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
 
         jComboBox23.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5" }));
+        jComboBox23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox23ActionPerformed(evt);
+            }
+        });
 
         jComboBox24.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5" }));
+        jComboBox24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox24ActionPerformed(evt);
+            }
+        });
 
         jButton18.setText("Add to Order");
 
-        jLabel64.setText("Price:");
+        jLabel64.setText("Price: 0.00" );
 
         javax.swing.GroupLayout SidesPanelLayout = new javax.swing.GroupLayout(SidesPanel);
         SidesPanel.setLayout(SidesPanelLayout);
         SidesPanelLayout.setHorizontalGroup(
             SidesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SidesPanelLayout.createSequentialGroup()
-                .addGroup(SidesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(SidesPanelLayout.createSequentialGroup()
-                        .addGap(93, 93, 93)
-                        .addComponent(jLabel12))
-                    .addGroup(SidesPanelLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel59))
-                    .addGroup(SidesPanelLayout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addGroup(SidesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton18)
-                            .addComponent(jLabel60)
-                            .addComponent(jLabel64))))
-                .addContainerGap(243, Short.MAX_VALUE))
-            .addGroup(SidesPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(SidesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel61, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jComboBox22, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
+                .addGap(143, 143, 143)
                 .addGroup(SidesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel62)
                     .addGroup(SidesPanelLayout.createSequentialGroup()
@@ -1120,6 +1420,20 @@ public static int totalFries = 999;
                     .addComponent(jLabel63)
                     .addComponent(jComboBox24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22))
+            .addGroup(SidesPanelLayout.createSequentialGroup()
+                .addGap(115, 115, 115)
+                .addGroup(SidesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(SidesPanelLayout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(jLabel12))
+                    .addComponent(jLabel59)
+                    .addGroup(SidesPanelLayout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addGroup(SidesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton18)
+                            .addComponent(jLabel64)
+                            .addComponent(jLabel60))))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
         SidesPanelLayout.setVerticalGroup(
             SidesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1140,11 +1454,11 @@ public static int totalFries = 999;
                     .addComponent(jComboBox22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addComponent(jLabel64)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton18)
-                .addGap(19, 19, 19))
+                .addGap(21, 21, 21))
         );
 
         jPanel1.add(SidesPanel, "card2");
@@ -1161,48 +1475,153 @@ public static int totalFries = 999;
         jLabel68.setText("Large");
 
         jComboBox25.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5" }));
+        jComboBox25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox25ActionPerformed(evt);
+                 switch (jComboBox25.getSelectedItem().toString()) {
+                    case "0":
+                        drinks.setPrice(0.0);
+                        jLabel69.setText("Price: "+drinks.getCostTotal());
+                        break;
+                    case "1":
+                        drinks.addDrink(0,0);
+                        drinks.setPrice(1.0);
+                        jLabel69.setText("Price: "+drinks.getCostTotal());
+                        break;
+                    case "2":
+                        drinks.addDrink(1,0);
+                        jLabel69.setText("Price: "+drinks.getCostTotal());
+                        break;
+                    case "3":
+                       drinks.addDrink(2,0);
+                        jLabel69.setText("Price: "+drinks.getCostTotal());
+                        break;
+                    case "4":
+                       drinks.addDrink(3,0);
+                        jLabel69.setText("Price: "+drinks.getCostTotal());
+                        break;
+                    case "5":
+                        drinks.addDrink(4,0);
+                        jLabel69.setText("Price: "+drinks.getCostTotal());
+                        break;
+                    default:
+                        break;
+                }
+                
+            }
+        });
 
         jComboBox26.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5" }));
+        jComboBox26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox26ActionPerformed(evt);
+                switch (jComboBox26.getSelectedItem().toString()) {
+                    case "0":
+                        drinks.setPrice(0.0);
+                        jLabel69.setText("Price: "+drinks.getCostTotal());
+                        break;
+                    case "1":
+                        drinks.addDrink(0,1);
+                        drinks.setPrice(1.2);
+                        jLabel69.setText("Price: "+drinks.getCostTotal());
+                        break;
+                    case "2":
+                        drinks.addDrink(1,1);
+                        jLabel69.setText("Price: "+drinks.getCostTotal());
+                        break;
+                    case "3":
+                       drinks.addDrink(2,1);
+                        jLabel69.setText("Price: "+drinks.getCostTotal());
+                        break;
+                    case "4":
+                       drinks.addDrink(3,1);
+                        jLabel69.setText("Price: "+drinks.getCostTotal());
+                        break;
+                    case "5":
+                        drinks.addDrink(4,1);
+                        jLabel69.setText("Price: "+drinks.getCostTotal());
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
 
         jComboBox27.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5" }));
+        jComboBox27.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox27ActionPerformed(evt);
+                switch (jComboBox27.getSelectedItem().toString()) {
+                    case "0":
+                        drinks.setPrice(0.0);
+                        jLabel69.setText("Price: "+drinks.getCostTotal());
+                        break;
+                    case "1":
+                        drinks.addDrink(0,2);
+                        drinks.setPrice(1.5);
+                        jLabel69.setText("Price: "+drinks.getCostTotal());
+                        break;
+                    case "2":
+                        drinks.addDrink(1,2);
+                        jLabel69.setText("Price: "+drinks.getCostTotal());
+                        break;
+                    case "3":
+                       drinks.addDrink(2,2);
+                        jLabel69.setText("Price: "+drinks.getCostTotal());
+                        break;
+                    case "4":
+                       drinks.addDrink(3,2);
+                        jLabel69.setText("Price: "+drinks.getCostTotal());
+                        break;
+                    case "5":
+                        drinks.addDrink(4,2);
+                        jLabel69.setText("Price: "+drinks.getCostTotal());
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
 
         jButton19.setText("Add to Order");
 
-        jLabel69.setText("Price:");
+        jLabel69.setText("Price: $0.00");
 
         javax.swing.GroupLayout DrinksPanelLayout = new javax.swing.GroupLayout(DrinksPanel);
         DrinksPanel.setLayout(DrinksPanelLayout);
         DrinksPanelLayout.setHorizontalGroup(
             DrinksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(DrinksPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DrinksPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel66)
-                .addGap(70, 70, 70)
-                .addComponent(jLabel67)
+                .addGroup(DrinksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBox25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel66))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel68)
-                .addGap(27, 27, 27))
+                .addGroup(DrinksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(DrinksPanelLayout.createSequentialGroup()
+                        .addComponent(jComboBox26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5))
+                    .addComponent(jLabel67))
+                .addGap(165, 165, 165)
+                .addGroup(DrinksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBox27, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel68, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(21, 21, 21))
             .addGroup(DrinksPanelLayout.createSequentialGroup()
                 .addGroup(DrinksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(DrinksPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jComboBox25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(63, 63, 63)
-                        .addComponent(jComboBox26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(77, 77, 77)
-                        .addComponent(jComboBox27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(124, 124, 124)
+                        .addGroup(DrinksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(DrinksPanelLayout.createSequentialGroup()
+                                .addGap(75, 75, 75)
+                                .addComponent(jLabel13))
+                            .addComponent(jLabel65)))
                     .addGroup(DrinksPanelLayout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addComponent(jLabel13))
-                    .addGroup(DrinksPanelLayout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jLabel65))
-                    .addGroup(DrinksPanelLayout.createSequentialGroup()
-                        .addGap(83, 83, 83)
+                        .addGap(178, 178, 178)
                         .addGroup(DrinksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel69)
                             .addComponent(jButton19))))
-                .addContainerGap(218, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
         DrinksPanelLayout.setVerticalGroup(
             DrinksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1221,11 +1640,11 @@ public static int totalFries = 999;
                     .addComponent(jComboBox25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
                 .addComponent(jLabel69)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton19)
-                .addGap(19, 19, 19))
+                .addContainerGap())
         );
 
         jPanel1.add(DrinksPanel, "card2");
@@ -1350,12 +1769,12 @@ public static int totalFries = 999;
     jPanel1.add(Combo1Panel);
     jPanel1.repaint();
     jPanel1.revalidate();
-    entreeOne orderOfEntreeOne = new entreeOne();
-    ordersOfEntreeOnes[entreeOneOrders] = orderOfEntreeOne;
-    entreeOneOrders++;
-    newOrder.addEntreeOne(orderOfEntreeOne);
-     
-   }//GEN-LAST:event_jButton4ActionPerformed
+    newOrder.addEntreeOne(entreeOneOrder);
+    ordersOfEntreeOnes[entreeOneorders] = entreeOneOrder;
+    entreeOneorders++;
+    
+    
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
@@ -1367,6 +1786,9 @@ public static int totalFries = 999;
     jPanel1.add(Combo2Panel);
     jPanel1.repaint();
     jPanel1.revalidate();
+    newOrder.addEntreeTwo(entreeTwoOrder);
+    ordersOfEntreeTwo[entreeTwoorders] = entreeTwoOrder;
+    entreeTwoorders++;
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jPanel1ComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel1ComponentHidden
@@ -1392,6 +1814,9 @@ public static int totalFries = 999;
     jPanel1.add(Combo3Panel);
     jPanel1.repaint();
     jPanel1.revalidate();
+    newOrder.addEntreeThree(entreeThreeOrder);
+    ordersOfEntreeThree[entreeThreeorders] = entreeThreeOrder;
+    entreeThreeorders++;
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -1440,6 +1865,9 @@ public static int totalFries = 999;
     jPanel1.add(SidesPanel);
     jPanel1.repaint();
     jPanel1.revalidate();
+    newOrder.addSideItems(orderOfFries);
+    ordersOfsideItemOne[sideItemOneordered] = orderOfFries;
+    sideItemOneordered++;
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -1452,6 +1880,9 @@ public static int totalFries = 999;
     jPanel1.add(DrinksPanel);
     jPanel1.repaint();
     jPanel1.revalidate();
+    newOrder.addDrinkItem(drinks);
+    ordersOfdrinkItemsordered[drinksOrdered] = drinks;
+    drinksOrdered++;
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jComboBox11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox11ActionPerformed
@@ -1462,9 +1893,129 @@ public static int totalFries = 999;
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton8ActionPerformed
 
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox3ActionPerformed
+
+    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox4ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox5ActionPerformed
+
+    private void jComboBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox6ActionPerformed
+
+    private void jComboBox7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox7ActionPerformed
+
+    private void jComboBox10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox10ActionPerformed
+
+    private void jComboBox12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox12ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox12ActionPerformed
+
+    private void jComboBox13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox13ActionPerformed
+
+    private void jComboBox15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox15ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox15ActionPerformed
+
+    private void jComboBox16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox16ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox16ActionPerformed
+
+    private void jComboBox17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox17ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox17ActionPerformed
+
+    private void jComboBox18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox18ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox18ActionPerformed
+
+    private void jComboBox19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox19ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox19ActionPerformed
+
+    private void jComboBox8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox8ActionPerformed
+
     private void jComboBox9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox9ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox9ActionPerformed
+
+    private void jComboBox20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox20ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox20ActionPerformed
+
+    private void jComboBox21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox21ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox21ActionPerformed
+
+    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton4ActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton3ActionPerformed
+
+    private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton5ActionPerformed
+
+    private void jRadioButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton6ActionPerformed
+
+    private void jRadioButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton7ActionPerformed
+
+    private void jComboBox22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox22ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox22ActionPerformed
+
+    private void jComboBox23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox23ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox23ActionPerformed
+
+    private void jComboBox24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox24ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox24ActionPerformed
+
+    private void jComboBox25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox25ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox25ActionPerformed
+
+    private void jComboBox26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox26ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox26ActionPerformed
+
+    private void jComboBox27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox27ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox27ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1526,6 +2077,7 @@ public static int totalFries = 999;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -1538,7 +2090,6 @@ public static int totalFries = 999;
     private javax.swing.JComboBox<String> jComboBox11;
     private javax.swing.JComboBox<String> jComboBox12;
     private javax.swing.JComboBox<String> jComboBox13;
-    private javax.swing.JComboBox<String> jComboBox14;
     private javax.swing.JComboBox<String> jComboBox15;
     private javax.swing.JComboBox<String> jComboBox16;
     private javax.swing.JComboBox<String> jComboBox17;
@@ -1606,7 +2157,6 @@ public static int totalFries = 999;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
-    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
@@ -1647,7 +2197,6 @@ public static int totalFries = 999;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     // End of variables declaration//GEN-END:variables
 }

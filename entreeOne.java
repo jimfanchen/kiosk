@@ -23,7 +23,7 @@ public class entreeOne {
     public String orderNumber = "";
     public static int totalNumberOfOrders =0;
     public static int numofOrders=0;
-    public static String name= "ManoBurger";
+    public static String name= "HamBurger";
     
     
     public entreeOne(){
@@ -35,10 +35,10 @@ public class entreeOne {
     }
     
    
-    
-    public static double getCostTotal(){
-        return orderCostTotal;
+    public static void setCost(double c){
+        orderCostTotal = c;
     }
+   
     
      public static void setBuns(int n){
         if(n==0){
@@ -48,6 +48,10 @@ public class entreeOne {
         else if(n==2){
             orderCostTotal += 0.50;
             buns = 3;
+        }
+        else if(n==1){
+            orderCostTotal = 6.99;
+            buns =2;
         }
        
     }
@@ -65,6 +69,10 @@ public class entreeOne {
             orderCostTotal += 1.50;
             paddie =3;
         }
+        else if (n==1){
+            orderCostTotal = 6.99;
+            paddie =2;
+        }
          
            
         }
@@ -80,6 +88,10 @@ public class entreeOne {
         else if(n==2){
             orderCostTotal += 0.40;
             tomato = 4;
+        }
+        else if(n==1){
+            orderCostTotal = 6.99;
+            tomato = 2;
         }
        }
     
@@ -98,6 +110,10 @@ public class entreeOne {
             orderCostTotal += 0.30;
             lettuce =3;
         }
+        else if(n==1){
+            orderCostTotal = 6.99;
+            lettuce = 2;
+        }
        
     }
     public static int getLettuce(){
@@ -115,6 +131,10 @@ public class entreeOne {
             orderCostTotal += 1.30;
             cheese =4;
         }
+        else if(n==1){
+            orderCostTotal = 6.99;
+            cheese =2;
+        }
         
     }
     
@@ -123,7 +143,9 @@ public class entreeOne {
     }
     
     
-    
+     public static double getCostTotal(){
+        return orderCostTotal;
+    }
   
     
     

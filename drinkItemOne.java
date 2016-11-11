@@ -12,8 +12,8 @@ package kiosk;
 public class drinkItemOne {
     public static int drinksOrdered = 0;
     public static double totalCostSmall = 1.50;
-    public static double totalCostMedium = 2.50;
-    public static double totalCostLarge = 3.50;
+    public static double totalCostMedium = 1.20;
+    public static double totalCostLarge = 1.50;
     public static double totalCost = 0;
     public String name = "Fountan drink";
     
@@ -42,6 +42,14 @@ public class drinkItemOne {
                 break;
                 
         }
+    }
+    
+    public static void setPrice(double d){
+        totalCost =d;
+    }
+    
+    public static double getCostTotal(){
+        return totalCost;
     }
     
     public static int returnDrinksTotal(){

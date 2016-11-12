@@ -677,7 +677,11 @@ public class MainOrderScreen extends javax.swing.JFrame {
                 jLabel4.setText("Tax: " + df2.format(tax));
                 totalCostF = totalCost + tax;
                 jLabel5.setText("Total: " + df2.format(totalCostF));
-                
+                jList2.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Hamburger x" + newOrder.entreeOneorders, "Cheeseburger x" + newOrder.entreeTwoorders, "Stacked Burger x"+ newOrder.entreeThreeorders, "V.O.Burger x" + newOrder.entreeFourorders, "Manburger x" + newOrder.entreeFiveorders, "Fries x" +newOrder.sideItemOneordered, "Drinks x" + newOrder.drinksOrdered};
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
             }
             });
 
@@ -916,6 +920,22 @@ public class MainOrderScreen extends javax.swing.JFrame {
         jLabel40.setText("Price: " + df2.format(entreeThreeOrder.getCostTotal()));
 
         jButton16.setText("Add to Order");
+            jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                 jComboBox15ActionPerformed(evt);
+                 totalCost = newOrder.getCostTotal();
+                jLabel3.setText("Sub Total: " + df2.format(totalCost) );
+                tax = totalCost * 0.04;
+                jLabel4.setText("Tax: " + df2.format(tax));
+                totalCostF = totalCost + tax;
+                jLabel5.setText("Total: " + df2.format(totalCostF));
+                jList2.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Hamburger x" + newOrder.entreeOneorders, "Cheeseburger x" + newOrder.entreeTwoorders, "Stacked Burger x"+ newOrder.entreeThreeorders, "V.O.Burger x" + newOrder.entreeFourorders, "Manburger x" + newOrder.entreeFiveorders, "Fries x" +newOrder.sideItemOneordered, "Drinks x" + newOrder.drinksOrdered};
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+            }
+            });
 
         javax.swing.GroupLayout Combo3PanelLayout = new javax.swing.GroupLayout(Combo3Panel);
         Combo3Panel.setLayout(Combo3PanelLayout);
@@ -1790,7 +1810,7 @@ public class MainOrderScreen extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
                             .addComponent(jLabel5))

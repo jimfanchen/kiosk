@@ -4,10 +4,13 @@
  * and open the template in the editor.
  */
 package kiosk;
+import java.math.*;
+import java.text.*;
+import java.util.*;
 
 /**
  *
- * @author Trent
+ * @author Trent and Fan
  */
 public class MainOrderScreen extends javax.swing.JFrame {
  public static presetOrder[] ordersofComboone = new presetOrder[40]; 
@@ -34,6 +37,11 @@ public class MainOrderScreen extends javax.swing.JFrame {
     public static int combos = 0;
     public static int ticketNumber = 0;
     public static orderTicket newOrder = new orderTicket();
+    public static double totalCost = 0;
+    public static double tax =0;
+    public static double totalCostF = 0;
+    private static DecimalFormat df2 = new DecimalFormat(".##");
+    
     
     /**
      * Creates new form MainOrderScreen
@@ -196,6 +204,7 @@ public class MainOrderScreen extends javax.swing.JFrame {
         jComboBox27 = new javax.swing.JComboBox<>();
         jButton19 = new javax.swing.JButton();
         jLabel69 = new javax.swing.JLabel();
+        
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -253,6 +262,7 @@ public class MainOrderScreen extends javax.swing.JFrame {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+                
             }
         });
 
@@ -376,16 +386,19 @@ public class MainOrderScreen extends javax.swing.JFrame {
                     case "Extra":
                         entreeOneOrder.setPaddie(2);
                         jLabel18.setText("Price: "+entreeOne.getCostTotal());
+                        totalCost = entreeOne.getCostTotal();
                         break;
                     case "Regular":
                         entreeOneOrder.setPaddie(1);
                         entreeOneOrder.orderCostTotal = 6.99;
                         jLabel18.setText("Price: "+ entreeOne.getCostTotal());
+                        totalCost = entreeOne.getCostTotal();
                         break;
                     case "None":
                         entreeOneOrder.setPaddie(0);
                         entreeOneOrder.orderCostTotal -= 1;
                         jLabel18.setText("Price: "+ entreeOne.getCostTotal());
+                        totalCost = entreeOne.getCostTotal();
                         break;
                     default:
                         break;
@@ -404,16 +417,19 @@ public class MainOrderScreen extends javax.swing.JFrame {
                     case "Extra":
                         entreeOneOrder.setTomato(2);
                         jLabel18.setText("Price: "+entreeOne.getCostTotal());
+                        totalCost = entreeOne.getCostTotal();
                         break;
                     case "Regular":
                         entreeOneOrder.setTomato(1);
                         entreeOneOrder.orderCostTotal = 6.99;
                         jLabel18.setText("Price: "+ entreeOne.getCostTotal());
+                        totalCost = entreeOne.getCostTotal();
                         break;
                     case "None":
                         entreeOneOrder.setTomato(0);
                         entreeOneOrder.orderCostTotal -= .4;
                         jLabel18.setText("Price: "+ entreeOne.getCostTotal());
+                        totalCost = entreeOne.getCostTotal();
                         break;
                     default:
                         break;
@@ -424,6 +440,16 @@ public class MainOrderScreen extends javax.swing.JFrame {
         jLabel18.setText("Price: " + entreeOne.getCostTotal());
 
         jButton12.setText("Add to Order");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                 jComboBox15ActionPerformed(evt);
+                jLabel3.setText("Sub Total: " + totalCost );
+                tax = totalCost * 0.04;
+                jLabel4.setText("Tax: " + df2.format(tax));
+                totalCostF = totalCost + tax;
+                jLabel5.setText("Total: " + df2.format(totalCostF));
+            }
+            });
 
         jLabel19.setText("All time Classic! Serverd with");
 
@@ -1040,7 +1066,7 @@ public class MainOrderScreen extends javax.swing.JFrame {
         jPanel1.add(Burger1Panel, "card2");
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel10.setText("Cheese Burger");
+        jLabel10.setText("Manburger");
 
         jLabel27.setText("Just like our great hamburger");
 
@@ -1063,10 +1089,18 @@ public class MainOrderScreen extends javax.swing.JFrame {
         });
 
         jButton15.setText("Add to Order");
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox15ActionPerformed(evt);
+                jLabel3.setText("Sub Total: " );
+                jLabel4.setText("Tax: ");
+                jLabel5.setText("Total: ");
+            }
+        });
 
         jLabel52.setText("Price: $9.99");
 
-        jLabel26.setText("But add some cheese!");
+        jLabel26.setText("But with 4 paddies !");
 
         jLabel28.setText("Paddie");
 
@@ -1354,7 +1388,7 @@ public class MainOrderScreen extends javax.swing.JFrame {
                 switch (jComboBox22.getSelectedItem().toString()) {
                     case "0":
                         orderOfFries.setFries(0);
-                        jLabel64.setText("Price: "+sideItemOne.getCostTotal());
+                        jLabel64.setText("Price: "+sideItemOne.getCostTotal() );
                         break;
                     case "1":
                         orderOfFries.setFries(1);
@@ -1386,6 +1420,7 @@ public class MainOrderScreen extends javax.swing.JFrame {
         jComboBox23.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox23ActionPerformed(evt);
+            
             }
         });
 

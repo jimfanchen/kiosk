@@ -17,15 +17,21 @@ public class MainOrderScreen extends javax.swing.JFrame {
     public static entreeOne [] ordersOfEntreeOnes = new entreeOne[40];
     public static entreeTwo [] ordersOfEntreeTwo = new entreeTwo[40];
     public static entreeThree [] ordersOfEntreeThree = new entreeThree[40];
+    public static entreeFour [] ordersOfEntreeFour = new entreeFour[40];
+    public static entreeFive [] ordersOfEntreeFive = new entreeFive[40];
     public static sideItemOne [] ordersOfsideItemOne = new sideItemOne[40];
     public static entreeOne entreeOneOrder = new entreeOne();
     public static entreeTwo entreeTwoOrder = new entreeTwo();
     public static entreeThree entreeThreeOrder = new entreeThree();
+    public static entreeFour entreeFourOrder = new entreeFour();
+    public static entreeFive entreeFiveOrder = new entreeFive();
     public static sideItemOne orderOfFries = new sideItemOne();
     public static drinkItemOne drinks = new drinkItemOne();
     public static int entreeOneorders =0;
     public static int entreeTwoorders =0;
     public static int entreeThreeorders =0;
+    public static int entreeFourOrders = 0;
+    public static int entreeFiveOrders =0;
     public static int sideItemOneordered =0;
     public static int drinksOrdered =0;
     public static int lettuce =0;
@@ -275,7 +281,7 @@ public class MainOrderScreen extends javax.swing.JFrame {
         jLabel2.setText("Your Order");
 
         jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { "Hamburger x0", "Cheeseburger x0","Stacked Burger x0", "V.O.Burger x0", "Manburger x0", "Fries x0", "Drinks x0" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -385,19 +391,19 @@ public class MainOrderScreen extends javax.swing.JFrame {
                 switch (jComboBox2.getSelectedItem().toString()) {
                     case "Extra":
                         entreeOneOrder.setPaddie(2);
-                        jLabel18.setText("Price: "+entreeOne.getCostTotal());
+                        jLabel18.setText("Price: "+ df2.format(entreeOne.getCostTotal()));
                         totalCost = entreeOne.getCostTotal();
                         break;
                     case "Regular":
                         entreeOneOrder.setPaddie(1);
                         entreeOneOrder.orderCostTotal = 6.99;
-                        jLabel18.setText("Price: "+ entreeOne.getCostTotal());
+                        jLabel18.setText("Price: "+ df2.format(entreeOne.getCostTotal()));
                         totalCost = entreeOne.getCostTotal();
                         break;
                     case "None":
                         entreeOneOrder.setPaddie(0);
                         entreeOneOrder.orderCostTotal -= 1;
-                        jLabel18.setText("Price: "+ entreeOne.getCostTotal());
+                        jLabel18.setText("Price: "+ df2.format(entreeOne.getCostTotal()));
                         totalCost = entreeOne.getCostTotal();
                         break;
                     default:
@@ -416,19 +422,19 @@ public class MainOrderScreen extends javax.swing.JFrame {
                 switch (jComboBox3.getSelectedItem().toString()) {
                     case "Extra":
                         entreeOneOrder.setTomato(2);
-                        jLabel18.setText("Price: "+entreeOne.getCostTotal());
+                        jLabel18.setText("Price: "+ df2.format(entreeOne.getCostTotal()));
                         totalCost = entreeOne.getCostTotal();
                         break;
                     case "Regular":
                         entreeOneOrder.setTomato(1);
                         entreeOneOrder.orderCostTotal = 6.99;
-                        jLabel18.setText("Price: "+ entreeOne.getCostTotal());
+                        jLabel18.setText("Price: "+ df2.format(entreeOne.getCostTotal()));
                         totalCost = entreeOne.getCostTotal();
                         break;
                     case "None":
                         entreeOneOrder.setTomato(0);
                         entreeOneOrder.orderCostTotal -= .4;
-                        jLabel18.setText("Price: "+ entreeOne.getCostTotal());
+                        jLabel18.setText("Price: "+  df2.format(entreeOne.getCostTotal()));
                         totalCost = entreeOne.getCostTotal();
                         break;
                     default:
@@ -443,11 +449,17 @@ public class MainOrderScreen extends javax.swing.JFrame {
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                  jComboBox15ActionPerformed(evt);
-                jLabel3.setText("Sub Total: " + totalCost );
+                totalCost = newOrder.getCostTotal();
+                jLabel3.setText("Sub Total: " + df2.format(totalCost) );
                 tax = totalCost * 0.04;
                 jLabel4.setText("Tax: " + df2.format(tax));
                 totalCostF = totalCost + tax;
                 jLabel5.setText("Total: " + df2.format(totalCostF));
+                jList2.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Hamburger x" + newOrder.entreeOneorders, "Cheeseburger x" + newOrder.entreeTwoorders, "Stacked Burger x"+ newOrder.entreeThreeorders, "V.O.Burger x" + newOrder.entreeFourorders, "Manburger x" + newOrder.entreeFiveorders, "Fries x" +newOrder.sideItemOneordered, "Drinks x" + newOrder.drinksOrdered};
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
             }
             });
 
@@ -468,17 +480,20 @@ public class MainOrderScreen extends javax.swing.JFrame {
                 switch (jComboBox4.getSelectedItem().toString()) {
                     case "Extra":
                         entreeOneOrder.setLettuce(2);
-                        jLabel18.setText("Price: "+entreeOne.getCostTotal());
+                        jLabel18.setText("Price: "+ df2.format(entreeOne.getCostTotal()));
+                        totalCost = entreeOneOrder.getCostTotal();
                         break;
                     case "Regular":
                         entreeOneOrder.setLettuce(1);
                         entreeOneOrder.orderCostTotal = 6.99;
-                        jLabel18.setText("Price: "+ entreeOne.getCostTotal());
+                        jLabel18.setText("Price: "+ df2.format(entreeOne.getCostTotal()));
+                        totalCost = entreeOneOrder.getCostTotal();
                         break;
                     case "None":
                         entreeOneOrder.setLettuce(0);
                         entreeOneOrder.orderCostTotal -= 0.25;
-                        jLabel18.setText("Price: "+ entreeOne.getCostTotal());
+                        jLabel18.setText("Price: "+  df2.format(entreeOne.getCostTotal()));
+                        totalCost = entreeOneOrder.getCostTotal();
                         break;
                     default:
                         break;
@@ -579,17 +594,18 @@ public class MainOrderScreen extends javax.swing.JFrame {
                 switch (jComboBox1.getSelectedItem().toString()) {
                     case "Extra":
                         entreeTwoOrder.setLettuce(2);
-                        jLabel29.setText("Price: "+entreeTwo.getCostTotal());
+                        jLabel29.setText("Price: "+ df2.format(entreeTwo.getCostTotal()));
+                        totalCost = entreeTwoOrder.getCostTotal();
                         break;
                     case "Regular":
                         entreeTwoOrder.setLettuce(1);
                         entreeTwoOrder.orderCostTotal = 8.99;
-                        jLabel29.setText("Price: "+ entreeTwo.getCostTotal());
+                        jLabel29.setText("Price: "+ df2.format(entreeTwo.getCostTotal()));
                         break;
                     case "None":
                         entreeTwoOrder.setLettuce(0);
                         entreeTwoOrder.orderCostTotal -= 1;
-                        jLabel29.setText("Price: "+ entreeTwo.getCostTotal());
+                        jLabel29.setText("Price: "+ df2.format(entreeTwo.getCostTotal()));
                         break;
                     default:
                         break;
@@ -606,17 +622,17 @@ public class MainOrderScreen extends javax.swing.JFrame {
                  switch (jComboBox5.getSelectedItem().toString()) {
                     case "Extra":
                         entreeTwoOrder.setTomato(2);
-                        jLabel29.setText("Price: "+entreeTwo.getCostTotal());
+                        jLabel29.setText("Price: "+ df2.format(entreeTwo.getCostTotal()));
                         break;
                     case "Regular":
                         entreeTwoOrder.setTomato(1);
                         entreeTwoOrder.orderCostTotal = 8.99;
-                        jLabel29.setText("Price: "+ entreeTwo.getCostTotal());
+                        jLabel29.setText("Price: "+  df2.format(entreeTwo.getCostTotal()));
                         break;
                     case "None":
                         entreeTwoOrder.setTomato(0);
                         entreeTwoOrder.orderCostTotal -= 0.4;
-                        jLabel29.setText("Price: "+ entreeTwo.getCostTotal());
+                        jLabel29.setText("Price: "+ df2.format(entreeTwo.getCostTotal()));
                         break;
                     default:
                         break;
@@ -633,17 +649,17 @@ public class MainOrderScreen extends javax.swing.JFrame {
                  switch (jComboBox6.getSelectedItem().toString()) {
                     case "Extra":
                         entreeTwoOrder.setLettuce(2);
-                        jLabel29.setText("Price: "+entreeTwo.getCostTotal());
+                        jLabel29.setText("Price: "+ df2.format(entreeTwo.getCostTotal()));
                         break;
                     case "Regular":
                         entreeTwoOrder.setLettuce(1);
                         entreeTwoOrder.orderCostTotal = 8.99;
-                        jLabel29.setText("Price: "+ entreeTwo.getCostTotal());
+                        jLabel29.setText("Price: "+ df2.format(entreeTwo.getCostTotal()));
                         break;
                     case "None":
                         entreeTwoOrder.setLettuce(0);
                         entreeTwoOrder.orderCostTotal -= 0.25;
-                        jLabel29.setText("Price: "+ entreeTwo.getCostTotal());
+                        jLabel29.setText("Price: "+ df2.format(entreeTwo.getCostTotal()));
                         break;
                     default:
                         break;
@@ -652,8 +668,20 @@ public class MainOrderScreen extends javax.swing.JFrame {
         });
 
         jButton14.setText("Add to Order");
+         jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                 jComboBox15ActionPerformed(evt);
+                 totalCost = newOrder.getCostTotal();
+                jLabel3.setText("Sub Total: " + df2.format(totalCost) );
+                tax = totalCost * 0.04;
+                jLabel4.setText("Tax: " + df2.format(tax));
+                totalCostF = totalCost + tax;
+                jLabel5.setText("Total: " + df2.format(totalCostF));
+                
+            }
+            });
 
-        jLabel29.setText("Price: "+entreeTwoOrder.getCostTotal());
+        jLabel29.setText("Price: "+ df2.format(entreeTwoOrder.getCostTotal()));
 
         jLabel31.setText("Plus fries and a drink");
 
@@ -666,17 +694,17 @@ public class MainOrderScreen extends javax.swing.JFrame {
                  switch (jComboBox7.getSelectedItem().toString()) {
                     case "Extra":
                         entreeTwoOrder.setLettuce(2);
-                        jLabel29.setText("Price: "+entreeTwo.getCostTotal());
+                        jLabel29.setText("Price: "+ df2.format(entreeTwo.getCostTotal()));
                         break;
                     case "Regular":
                         entreeTwoOrder.setLettuce(1);
                         entreeTwoOrder.orderCostTotal = 8.99;
-                        jLabel29.setText("Price: "+ entreeTwo.getCostTotal());
+                        jLabel29.setText("Price: "+ df2.format(entreeTwo.getCostTotal()));
                         break;
                     case "None":
                         entreeTwoOrder.setLettuce(0);
                         entreeTwoOrder.orderCostTotal -= 0.5;
-                        jLabel29.setText("Price: "+ entreeTwo.getCostTotal());
+                        jLabel29.setText("Price: "+ df2.format(entreeTwo.getCostTotal()));
                         break;
                     default:
                         break;
@@ -786,17 +814,17 @@ public class MainOrderScreen extends javax.swing.JFrame {
                  switch (jComboBox10.getSelectedItem().toString()) {
                     case "Extra":
                         entreeThreeOrder.setPaddie(2);
-                        jLabel40.setText("Price: "+entreeThree.getCostTotal());
+                        jLabel40.setText("Price: "+ df2.format(entreeThree.getCostTotal()));
                         break;
                     case "Regular":
                         entreeThreeOrder.setPaddie(1);
                         entreeThreeOrder.orderCostTotal = 10.5;
-                        jLabel40.setText("Price: "+ entreeThree.getCostTotal());
+                        jLabel40.setText("Price: "+ df2.format(entreeThree.getCostTotal()));
                         break;
                     case "None":
                         entreeThreeOrder.setPaddie(0);
                         entreeThreeOrder.orderCostTotal -= 1;
-                        jLabel40.setText("Price: "+ entreeThree.getCostTotal());
+                        jLabel40.setText("Price: "+ df2.format(entreeThree.getCostTotal()));
                         break;
                     default:
                         break;
@@ -813,17 +841,17 @@ public class MainOrderScreen extends javax.swing.JFrame {
                  switch (jComboBox10.getSelectedItem().toString()) {
                     case "Extra":
                         entreeThreeOrder.setTomato(2);
-                        jLabel40.setText("Price: "+entreeThree.getCostTotal());
+                        jLabel40.setText("Price: "+ df2.format(entreeThree.getCostTotal()));
                         break;
                     case "Regular":
                         entreeThreeOrder.setTomato(1);
                         entreeThreeOrder.orderCostTotal = 10.5;
-                        jLabel40.setText("Price: "+ entreeThree.getCostTotal());
+                        jLabel40.setText("Price: "+ df2.format(entreeThree.getCostTotal()));
                         break;
                     case "None":
                         entreeThreeOrder.setTomato(0);
                         entreeThreeOrder.orderCostTotal -= 0.4;
-                        jLabel40.setText("Price: "+ entreeThree.getCostTotal());
+                        jLabel40.setText("Price: "+ df2.format(entreeThree.getCostTotal()));
                         break;
                     default:
                         break;
@@ -840,17 +868,17 @@ public class MainOrderScreen extends javax.swing.JFrame {
                  switch (jComboBox12.getSelectedItem().toString()) {
                     case "Extra":
                         entreeThreeOrder.setLettuce(2);
-                        jLabel40.setText("Price: "+entreeThree.getCostTotal());
+                        jLabel40.setText("Price: "+ df2.format(entreeThree.getCostTotal()));
                         break;
                     case "Regular":
                         entreeThreeOrder.setLettuce(1);
                         entreeThreeOrder.orderCostTotal = 10.5;
-                        jLabel40.setText("Price: "+ entreeThree.getCostTotal());
+                        jLabel40.setText("Price: "+ df2.format(entreeThree.getCostTotal()));
                         break;
                     case "None":
                         entreeThreeOrder.setLettuce(0);
                         entreeThreeOrder.orderCostTotal -= 0.25;
-                        jLabel40.setText("Price: "+ entreeThree.getCostTotal());
+                        jLabel40.setText("Price: "+ df2.format(entreeThree.getCostTotal()));
                         break;
                     default:
                         break;
@@ -867,17 +895,17 @@ public class MainOrderScreen extends javax.swing.JFrame {
                 switch (jComboBox12.getSelectedItem().toString()) {
                     case "Extra":
                         entreeThreeOrder.setCheese(2);
-                        jLabel40.setText("Price: "+entreeThree.getCostTotal());
+                        jLabel40.setText("Price: "+ df2.format(entreeThree.getCostTotal()));
                         break;
                     case "Regular":
                         entreeThreeOrder.setCheese(1);
                         entreeThreeOrder.orderCostTotal = 10.5;
-                        jLabel40.setText("Price: "+ entreeThree.getCostTotal());
+                        jLabel40.setText("Price: "+ df2.format(entreeThree.getCostTotal()));
                         break;
                     case "None":
                         entreeThreeOrder.setCheese(0);
                         entreeThreeOrder.orderCostTotal -= 0.25;
-                        jLabel40.setText("Price: "+ entreeThree.getCostTotal());
+                        jLabel40.setText("Price: "+ df2.format(entreeThree.getCostTotal()));
                         break;
                     default:
                         break;
@@ -885,7 +913,7 @@ public class MainOrderScreen extends javax.swing.JFrame {
             }
         });
 
-        jLabel40.setText("Price: " + entreeThreeOrder.getCostTotal());
+        jLabel40.setText("Price: " + df2.format(entreeThreeOrder.getCostTotal()));
 
         jButton16.setText("Add to Order");
 
@@ -979,6 +1007,25 @@ public class MainOrderScreen extends javax.swing.JFrame {
         jComboBox15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox15ActionPerformed(evt);
+                switch (jComboBox15.getSelectedItem().toString()) {
+                    case "Extra":
+                        entreeFourOrder.setLettuce(2);
+                        jLabel47.setText("Price:" + df2.format(entreeFourOrder.getCostTotal()));
+                        break;
+                    case "Regular":
+                        entreeFourOrder.setLettuce(1);
+                        entreeFourOrder.orderCostTotal = 7.75;
+                       jLabel47.setText("Price:" + df2.format(entreeFourOrder.getCostTotal()));
+                        break;
+                    case "None":
+                        entreeThreeOrder.setLettuce(0);
+                        entreeFourOrder.orderCostTotal -= 0.25;
+                        jLabel47.setText("Price:" + df2.format(entreeFourOrder.getCostTotal()));
+                        break;
+                    default:
+                        break;
+                }
+                
             }
         });
 
@@ -988,6 +1035,24 @@ public class MainOrderScreen extends javax.swing.JFrame {
         jComboBox16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox16ActionPerformed(evt);
+                 switch (jComboBox16.getSelectedItem().toString()) {
+                    case "Extra":
+                        entreeFourOrder.setLettuce(2);
+                        jLabel47.setText("Price:" + df2.format(entreeFourOrder.getCostTotal()));
+                        break;
+                    case "Regular":
+                        entreeFourOrder.setLettuce(1);
+                        entreeFourOrder.orderCostTotal = 7.75;
+                       jLabel47.setText("Price:" + df2.format(entreeFourOrder.getCostTotal()));
+                        break;
+                    case "None":
+                        entreeThreeOrder.setLettuce(0);
+                        entreeFourOrder.orderCostTotal -= 0.25;
+                        jLabel47.setText("Price:" + df2.format(entreeFourOrder.getCostTotal()));
+                        break;
+                    default:
+                        break;
+                }
             }
         });
 
@@ -1000,7 +1065,7 @@ public class MainOrderScreen extends javax.swing.JFrame {
             }
         });
 
-        jLabel47.setText("Price: $4.44");
+        jLabel47.setText("Price:" + df2.format(entreeFourOrder.getCostTotal()));
 
         jButton20.setText("Add to Order");
 
@@ -1864,6 +1929,9 @@ public class MainOrderScreen extends javax.swing.JFrame {
     jPanel1.add(Burger1Panel);
     jPanel1.repaint();
     jPanel1.revalidate();
+    newOrder.addEntreeFour(entreeFourOrder);
+    ordersOfEntreeFour[entreeFourOrders] = entreeFourOrder;
+    entreeFourOrders++;
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed

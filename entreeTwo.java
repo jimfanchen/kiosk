@@ -48,11 +48,11 @@ public class entreeTwo {
         }
         else if(n==2){
             orderCostTotal += 0.50;
-            buns = 3;
+            buns = 4;
         }
         else if(n==1){
             orderCostTotal = 8.99;
-            buns =2;
+            buns =3;
         }
        
     }
@@ -109,11 +109,11 @@ public class entreeTwo {
         }
         else if(n==2){
             orderCostTotal += 0.30;
-            lettuce =3;
+            lettuce =4;
         }
         else if(n==1){
             orderCostTotal = 8.99;
-            lettuce = 2;
+            lettuce = 3;
         }
        
     }
@@ -130,11 +130,11 @@ public class entreeTwo {
         }
         else if(n==2){
             orderCostTotal += 1.30;
-            cheese =4;
+            cheese =6;
         }
         else if(n==1){
             orderCostTotal = 8.99;
-            cheese =2;
+            cheese =4;
         }
         
     }

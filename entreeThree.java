@@ -7,23 +7,26 @@ package kiosk;
 
 /**
  *
- * @author Jim
+ * @author Fan
  */
 public class entreeThree {
         
     public static int numberOfEntreeThreeOrdered =0;
     public static int buns = 3;
     public static int cheese =4;
-    public static int paddie = 4;
+    
+    public static int paddie = 3;
     public static int lettuce =3;
     public static int tomato = 2;
-    public static double orderCostTotal = 10.5;
+    public static double orderCostTotal = 9.5;
     public String orderNumber = "";
     public static int totalNumberOfOrders =0;
     public static int numofOrders=0;
     public String name = "Stacked Burger";
     
-  
+  public entreeThree(){
+      
+  }
     
     public static void reest(){
         numberOfEntreeThreeOrdered = 0;
@@ -43,14 +46,15 @@ public class entreeThree {
         }
         else if(n==2){
             orderCostTotal += 0.50;
-            buns = 3;
+            buns = 4;
         }
         else if(n==1){
-            orderCostTotal = 10.5;
-            buns =2;
+            orderCostTotal = 9.5;
+            buns =3;
         }
        
     }
+     
      
      public static int getBuns(){
          return buns;
@@ -63,11 +67,11 @@ public class entreeThree {
         }
         else if(n==2){
             orderCostTotal += 1.50;
-            paddie =3;
+            paddie =4;
         }
         else if (n==1){
-            orderCostTotal = 10.5;
-            paddie =2;
+            orderCostTotal = 9.5;
+            paddie =3;
         }
          
            
@@ -86,7 +90,7 @@ public class entreeThree {
             tomato = 4;
         }
         else if(n==1){
-            orderCostTotal = 10.5;
+            orderCostTotal = 9.5;
             tomato = 2;
         }
        }
@@ -107,7 +111,7 @@ public class entreeThree {
             lettuce =3;
         }
         else if(n==1){
-            orderCostTotal = 10.5;
+            orderCostTotal = 9.5;
             lettuce = 2;
         }
        
@@ -128,7 +132,7 @@ public class entreeThree {
             cheese =4;
         }
         else if(n==1){
-            orderCostTotal = 10.5;
+            orderCostTotal = 9.5;
             cheese =2;
         }
         
@@ -137,6 +141,8 @@ public class entreeThree {
     public static int getCheese(){
         return cheese;
     }
+    
+    
     
     
      public static double getCostTotal(){

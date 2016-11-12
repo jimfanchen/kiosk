@@ -7,7 +7,7 @@ package kiosk;
 
 /**
  *
- * @author Jim
+ * @author Fan
  */
 public class sideItemOne {
     public static int friesOrdered =0;

@@ -23,7 +23,7 @@ public class entreeOne {
     public String orderNumber = "";
     public static int totalNumberOfOrders =0;
     public static int numofOrders=0;
-    public static String name= "HamBurger";
+    public static String name= "Hamburger";
     
     
     public entreeOne(){
@@ -55,6 +55,10 @@ public class entreeOne {
         }
        
     }
+     
+     public static String getName(){
+         return name;
+     }
      
      public static int getBuns(){
          return buns;

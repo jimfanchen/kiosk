@@ -50,7 +50,7 @@ public class orderTicket {
     }
     public static int getEntreeOneLettuce(){
         int entreeOneLettuces =0;
-        if(ordersOfEntreeOnes.length == 0){
+        if(entreeOneorders == 0){
             return 0;
         }
         else{
@@ -126,11 +126,11 @@ public class orderTicket {
    
     public static int getEntreeOneBuns(){
         int entreeOneBuns =0;
-        if(ordersOfEntreeOnes.length == 0){
+        if(entreeOneorders == 0){
             return 0;
         }
         else{
-            for(int i=0; i<ordersOfEntreeOnes.length; i++){
+            for(int i=0; i<entreeOneorders; i++){
                 entreeOneBuns += ordersOfEntreeOnes[i].getBuns();
             }
             return entreeOneBuns;
@@ -179,11 +179,11 @@ public class orderTicket {
    
         public static int getEntreeOneCheese(){
         int entreeOneCheese =0;
-        if(ordersOfEntreeOnes.length == 0){
+        if(entreeOneorders == 0){
             return 0;
         }
         else{
-            for(int i=0; i<ordersOfEntreeOnes.length; i++){
+            for(int i=0; i<entreeOneorders; i++){
                 entreeOneCheese += ordersOfEntreeOnes[i].getCheese();
             }
             return entreeOneCheese;
@@ -245,11 +245,11 @@ public class orderTicket {
         
          public static int getEntreeOnePaddie(){
         int entreeOnePaddie =0;
-        if(ordersOfEntreeOnes.length == 0){
+        if(entreeOneorders == 0){
             return 0;
         }
         else{
-            for(int i=0; i<ordersOfEntreeOnes.length; i++){
+            for(int i=0; i<entreeOneorders; i++){
                 entreeOnePaddie += ordersOfEntreeOnes[i].getPaddie();
             }
             return entreeOnePaddie;
@@ -298,11 +298,11 @@ public class orderTicket {
         
          public static int getEntreeOneTomato(){
         int entreeOneTomato =0;
-        if(ordersOfEntreeOnes.length == 0){
+        if(entreeOneorders == 0){
             return 0;
         }
         else{
-            for(int i=0; i<ordersOfEntreeOnes.length; i++){
+            for(int i=0; i<entreeOneorders; i++){
                 entreeOneTomato += ordersOfEntreeOnes[i].getTomato();
             }
             return entreeOneTomato;

@@ -449,6 +449,9 @@ public class MainOrderScreen extends javax.swing.JFrame {
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                  jComboBox15ActionPerformed(evt);
+                 newOrder.addEntreeOne(entreeOneOrder);
+                 ordersOfEntreeOnes[entreeOneorders] = entreeOneOrder;
+                 entreeOneorders++;
                 totalCost = newOrder.getCostTotal();
                 jLabel3.setText("Sub Total: " + df2.format(totalCost) );
                 tax = totalCost * 0.04;
@@ -671,6 +674,9 @@ public class MainOrderScreen extends javax.swing.JFrame {
          jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                  jComboBox15ActionPerformed(evt);
+                 newOrder.addEntreeTwo(entreeTwoOrder);
+                 ordersOfEntreeTwo[entreeTwoorders] = entreeTwoOrder;
+                 entreeTwoorders++;
                  totalCost = newOrder.getCostTotal();
                 jLabel3.setText("Sub Total: " + df2.format(totalCost) );
                 tax = totalCost * 0.04;
@@ -923,6 +929,9 @@ public class MainOrderScreen extends javax.swing.JFrame {
             jButton16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                  jComboBox15ActionPerformed(evt);
+                 newOrder.addEntreeThree(entreeThreeOrder);
+                 ordersOfEntreeThree[entreeThreeorders] = entreeThreeOrder;
+                 entreeThreeorders++;
                  totalCost = newOrder.getCostTotal();
                 jLabel3.setText("Sub Total: " + df2.format(totalCost) );
                 tax = totalCost * 0.04;
@@ -1889,9 +1898,7 @@ public class MainOrderScreen extends javax.swing.JFrame {
     jPanel1.add(Combo1Panel);
     jPanel1.repaint();
     jPanel1.revalidate();
-    newOrder.addEntreeOne(entreeOneOrder);
-    ordersOfEntreeOnes[entreeOneorders] = entreeOneOrder;
-    entreeOneorders++;
+    
     
     
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -1906,9 +1913,7 @@ public class MainOrderScreen extends javax.swing.JFrame {
     jPanel1.add(Combo2Panel);
     jPanel1.repaint();
     jPanel1.revalidate();
-    newOrder.addEntreeTwo(entreeTwoOrder);
-    ordersOfEntreeTwo[entreeTwoorders] = entreeTwoOrder;
-    entreeTwoorders++;
+    
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jPanel1ComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel1ComponentHidden
@@ -1934,9 +1939,7 @@ public class MainOrderScreen extends javax.swing.JFrame {
     jPanel1.add(Combo3Panel);
     jPanel1.repaint();
     jPanel1.revalidate();
-    newOrder.addEntreeThree(entreeThreeOrder);
-    ordersOfEntreeThree[entreeThreeorders] = entreeThreeOrder;
-    entreeThreeorders++;
+    
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
